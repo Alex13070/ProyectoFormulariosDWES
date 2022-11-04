@@ -9,6 +9,15 @@ class Usuario
     private string $telefono;
     private string $password;
 
+
+    //CONSTRUCTOR
+
+    public function __construct(string $nombre,string $correo,string $telefono,string $password){
+        $this->nombre = $nombre;
+        $this->correo = $correo;
+        $this->telefono = $telefono;
+        $this->password = $password;
+    }
     
     //GETTER SETTER NOMBRE
     public function getNombre():string
