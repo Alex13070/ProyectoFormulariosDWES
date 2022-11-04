@@ -13,11 +13,11 @@ Vamos a plantear un sistema de usuarios en el que tendremos tres tipos de usuari
 - UsuarioPremium
 - UsuarioAdministrador
 
-Estos usuarios están designados de manera que <u>Usuario</u> sea el padre de <u>UsuarioPremium</u> y de <u>UsuarioAdministrador</u>. Sus atributos serán los siguientes:
+Estos usuarios están designados de manera que *Usuario* sea el padre de *UsuarioPremium* y de *UsuarioAdministrador*. Sus atributos serán los siguientes:
 
-- El <u>Usuario</u> es el tipo básico, contará con los atributos correo, contraseña, nombre, teléfono y sexo.
-- El <u>UsuarioPremium</u> cuenta con los mismos atributos que el <u>Usuario</u>. Además de esto, se le añade un descuento a las entradas del 15% para los conciertos y un 25% para el cine.
--  El <u>UsuarioAdministrador</u> cuenta con los mismos atributos que el <u>Usuario</u>. Además de esto, este usuario tiene la capacidad de registrar y eliminar eventos en la base de datos. 
+- El *Usuario* es el tipo básico, contará con los atributos correo, contraseña, nombre, teléfono y sexo.
+- El *UsuarioPremium* cuenta con los mismos atributos que el *Usuario*. Además de esto, se le añade un descuento a las entradas del 15% para los conciertos y un 25% para el cine.
+-  El *UsuarioAdministrador* cuenta con los mismos atributos que el *Usuario*. Además de esto, este usuario tiene la capacidad de registrar y eliminar eventos en la base de datos. 
 
 ### 2.2. Eventos
 
@@ -27,12 +27,12 @@ El sistema de eventos lo vamos a plantear de la siguiente manera:
 - Cine
 - Concierto
 
-Vamos a plantear una herencia en la que <u>Evento</u> será el padre y <u>Cine</u> y <u>Concierto</u> serán sus hijos. Los objetos cuentan con los siguientes atributos:
+Vamos a plantear una herencia en la que *Evento* será el padre y *Cine* y *Concierto* serán sus hijos. Los objetos cuentan con los siguientes atributos:
 
-- El <u>Evento</u> tiene como parámetros nombre, fecha, lugar, tarifa de entrada y aforo máximo.
+- El *Evento* tiene como parámetros nombre, fecha, lugar, tarifa de entrada y aforo máximo.
 
-- El <u>Cine</u> tendrá los atributos del <u>Evento</u> además de tener como atributo una <u>Pelicula</u>:
-    - De la <u>Pelicula</u> nos interesa guardar su nombre, duración y <u>Genero</u>.
+- El *Cine* tendrá los atributos del *Evento* además de tener como atributo una *Pelicula*:
+    - De la *Pelicula* nos interesa guardar su nombre, duración y *Genero*.
     - Los únicos géneros permitidos son los siguientes: 
         - Acción
         - Aventura
@@ -43,8 +43,8 @@ Vamos a plantear una herencia en la que <u>Evento</u> será el padre y <u>Cine</
         - Drama
         - Fantasía
 
-- El <u>Concierto</u> tendrá los atributos del <u>Evento</u> y además tendrá como atributo un <u>Grupo</u>:
-    - Del <u>Grupo</u> nos interesa guardar su nombre y su <u>EstiloMusical</u>: 
+- El *Concierto* tendrá los atributos del *Evento* y además tendrá como atributo un *Grupo*:
+    - Del *Grupo* nos interesa guardar su nombre y su *EstiloMusical*: 
         - Clásica
         - Jazz
         - Rock
