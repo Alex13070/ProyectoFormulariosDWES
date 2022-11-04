@@ -1,0 +1,2 @@
+# No nos interesa que se metan los archivos .csv
+*.csv
