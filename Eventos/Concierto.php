@@ -2,21 +2,32 @@
 
 namespace Eventos;
 
-use Utilidad\EstiloMusical;
 
 class Concierto extends Evento{
 
-    private EstiloMusical $grupo;
+    private array $grupos;
 
     
-    public function getGrupo() : EstiloMusical{
-        return $this->grupo;
+    public function getGrupos() : array{
+        return $this->grupos;
     }
 
 
-    public function setGrupo(EstiloMusical $grupo){
-        $this->grupo = $grupo;
+    public function setGrupos(array $grupos){
+        $this->grupos = $grupos;
     }
+
+
+    public function toCSV() : string {
+        return "Concierto;" . parent::toCSV();
+    }
+
+
+	public static function fromCSV(string $cadena): Concierto{
+
+
+
+	}
 }
 
 ?>

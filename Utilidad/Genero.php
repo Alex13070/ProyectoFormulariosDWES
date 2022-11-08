@@ -2,7 +2,7 @@
 
 namespace Utilidad;
 
-enum GeneroMusical{
+enum Genero{
 
     case ACCION;
     case AVENTURA;

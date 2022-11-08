@@ -76,6 +76,12 @@ abstract class Evento {
         $this->aforoMaximo = $aforoMaximo;
         return $this;
     }
+    public function toCSV() : string {
+        return $this->nombre . ";" . $this->fecha . ";" . $this->lugar . ";" . $this->tarifa . ";" . $this->aforoMaximo;
+    }
+
+    public  static abstract function fromCSV(string $cadena) : Evento;
+
 }
 
 ?>

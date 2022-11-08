@@ -2,20 +2,19 @@
 
 namespace Eventos;
 
-use Utilidad\GeneroMusical;
 
 class Pelicula {
 
     private string $nombre;
     private int $duracion;
-    private GeneroMusical $genero;
+    private array $generos;
 
     //Constructor
 
-    public function __construct(string $nombre,int $duracion,GeneroMusical $genero){
+    public function __construct(string $nombre,int $duracion,array $generos){
         $this->nombre = $nombre;
         $this->duracion = $duracion;
-        $this->genero = $genero;
+        $this->generos = $generos;
     }
 
 
@@ -38,14 +37,17 @@ class Pelicula {
 
     }
 
-    public function getGenero() : GeneroMusical{
-        return $this->genero;
+    public function getGeneros() : array{
+        return $this->generos;
     }
-
-    public function setGenero(GeneroMusical $genero){
-        $this->genero = $genero;
-
+    
+    public function setGeneros(array $generos){
+        $this->generos = $generos;
+        
         return $this;
+    }
+    public function  toCSV() : string {
+        return "Pelicula;" . $this->nombre . ";" . $this->duracion . ";" . $this->generos;
     }
 }
 

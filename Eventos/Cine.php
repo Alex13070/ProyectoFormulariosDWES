@@ -18,8 +18,19 @@ class Cine extends Evento{
 
     public function setPelicula(Pelicula $pelicula){
         $this->pelicula = $pelicula;
-
     }
+
+
+
+    public function  toCSV() : string {
+        return "Cine;" . parent::toCSV() . ";" . $this->pelicula->toCSV();
+    }
+
+
+	public static function  fromCSV(string $cadena): Evento {
+        
+        return new Cine();
+	}
 }
 
 ?>
