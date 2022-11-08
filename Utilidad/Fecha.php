@@ -131,6 +131,11 @@ class Fecha {
         return "$this->day/$this->month/$this->year";
     }
 
+    public static function fromDDMMYYYY(string $fecha) : Fecha {
+        $date = explode("/", $fecha);
+        return new Fecha (intval($date[0]), intval($date[1]), intval($date[2]));
+    }
+
     
 }
 

@@ -1,8 +1,9 @@
 <?php
 
 use Utilidad\EstiloMusical;
+use Utilidad\LeerEscribirCSV;
 
-class Grupo {
+class Grupo implements LeerEscribirCSV{
 
     private string $nombre;
     private EstiloMusical $estilo;
@@ -30,7 +31,13 @@ class Grupo {
     }
 
     public function  toCSV() : string {
-        return "Grupo;" . $this->nombre . ";" . $this->estilo;
+        return $this->nombre . "$/$" . $this->estilo;
+    }
+
+    public static function fromCSV(string $linea) : mixed {
+        $array = explode(";", $linea);
+
+        return new Grupo ($array[0], EstiloMusical::fromValue($array[1]));
     }
 }
 

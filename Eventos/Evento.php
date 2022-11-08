@@ -4,8 +4,9 @@ namespace Eventos;
 
 use Exception;
 use Utilidad\Fecha;
+use Utilidad\LeerEscribirCSV;
 
-abstract class Evento {
+abstract class Evento implements LeerEscribirCSV{
 
     private string $nombre;
     private Fecha $fecha;
@@ -77,10 +78,8 @@ abstract class Evento {
         return $this;
     }
     public function toCSV() : string {
-        return $this->nombre . ";" . $this->fecha . ";" . $this->lugar . ";" . $this->tarifa . ";" . $this->aforoMaximo;
+        return $this->nombre . ";" . $this->fecha->__toString() . ";" . $this->lugar . ";" . $this->tarifa . ";" . $this->aforoMaximo;
     }
-
-    public  static abstract function fromCSV(string $cadena) : Evento;
 
 }
 
