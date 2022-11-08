@@ -28,6 +28,10 @@ class Grupo {
     public function setEstilo($estilo){
         $this->estilo = $estilo;
     }
+
+    public function  toCSV() : string {
+        return "Grupo;" . $this->nombre . ";" . $this->estilo;
+    }
 }
 
 ?>

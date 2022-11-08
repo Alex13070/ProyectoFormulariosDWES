@@ -37,17 +37,17 @@ class Pelicula {
 
     }
 
-    public function  toCSV() : string {
-        return "Pelicula;" . $this->pelicula;
-    }
     public function getGeneros() : array{
         return $this->generos;
     }
-
+    
     public function setGeneros(array $generos){
         $this->generos = $generos;
-
+        
         return $this;
+    }
+    public function  toCSV() : string {
+        return "Pelicula;" . $this->nombre . ";" . $this->duracion . ";" . $this->generos;
     }
 }
 
