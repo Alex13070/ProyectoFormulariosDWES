@@ -54,3 +54,5 @@ Vamos a plantear una herencia en la que **Evento** será el padre y **Cine** y *
         - Trap
         - Reggaeton
 
+### 2.3. Entradas  
+In progress...
