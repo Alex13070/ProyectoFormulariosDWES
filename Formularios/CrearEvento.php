@@ -101,7 +101,7 @@ $estilos = EstiloMusical::cases();
                                 <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Tarifa</label>
-                                    <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0">
+                                    <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0" max="<?= TARIFA_MAXIMA_CINE ?>">
 
                                 </div>
 
