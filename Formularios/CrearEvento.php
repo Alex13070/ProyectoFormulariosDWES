@@ -18,6 +18,8 @@ if (isset($_POST["enviar"])) {
     if ($_POST["enviar"] === CINE){
         echo "Definitivamente, es cine";
 
+        $nombre = $_POST["fecha"];
+
     } else if ($_POST["enviar"] === CONCIERTO) {
         echo "Concierto";
     }
@@ -41,6 +43,7 @@ $estilos = EstiloMusical::cases();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/icons.css">
 </head>
 
 <body>
@@ -75,7 +78,6 @@ $estilos = EstiloMusical::cases();
                                     <label class="form-label">Nombre evento</label>
                                     <input class="form-control" id="evento" type="text" name="nombre"
                                         placeholder="Nombre del evento">
-                                    <p class="formulario_error"></p>
                                 </div>
 
                                 <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
