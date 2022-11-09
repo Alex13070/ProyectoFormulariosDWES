@@ -9,6 +9,8 @@ spl_autoload_register(function ($class) {
     require("$classPath${class}.php");
 }); 
 
+const TARIFA_MAXIMA_CINE = 20;
+const TARIFA_MAXIMA_CONCIERTO = 120;
 const AFORO_MAXIMO_CINE = 150;
 const AFORO_MAXIMO_CONCIERTO = 500;
 const CINE = "cine";
@@ -98,7 +100,7 @@ $estilos = EstiloMusical::cases();
                                 <div class="mb-3">
 
                                     <label class="form-label">Tarifa</label>
-                                    <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0">
+                                    <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0" max="<?= TARIFA_MAXIMA_CINE ?>">
 
                                 </div>
 
@@ -180,7 +182,7 @@ $estilos = EstiloMusical::cases();
 
                                     <label class="form-label">Tarifa</label>
                                     <input class="form-control" id="Tarifa" type="number" name="tarifa"
-                                        placeholder="tarifa" min="0" max="100">
+                                        placeholder="tarifa" min="0" max="<?= TARIFA_MAXIMA_CONCIERTO ?>">
 
                                 </div>
 
