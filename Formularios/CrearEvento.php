@@ -67,61 +67,63 @@ $estilos = EstiloMusical::cases();
 
 
                         <div id="cine">
-                            <form action="CrearEvento.php" method="post" id="formulario">
+                            <form action="CrearEvento.php" method="post" id="formularioCine">
 
                                 <!-- <input type="hidden" name="crear" value="cine"> -->
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check" id="nombre__evento">
                                     <label class="form-label">Nombre evento</label>
                                     <input class="form-control" id="evento" type="text" name="nombre"
                                         placeholder="Nombre del evento">
+                                    <p class="formulario_error"></p>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Fecha del evento</label>
                                     <input class="form-control" id="fecha" type="date" name="fecha"
                                         placeholder="dd/mm/yyyy">
-
+                                    <p class="formulario_error"></p>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Lugar evento</label>
                                     <input class="form-control" id="lugar" type="text" name="lugar"
                                         placeholder="Lugar del evento">
-
+                                    <p class="formulario_error"></p>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Tarifa</label>
                                     <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0">
-
+                                    <p class="formulario_error"></p>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Aforo máximo</label>
                                     <input class="form-control" id="aforo" type="number" name="aforo"
                                         placeholder="Aforo máximo (0-<?= AFORO_MAXIMO_CINE ?>)" min="0"
                                         max="<?= AFORO_MAXIMO_CINE ?>">
+                                    <p class="formulario_error"></p>    
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Nombre de la película</label>
                                     <input class="form-control" id="nombrepelicula" type="text" name="nombrepelicula"
                                         placeholder="Nombre de la película">
-
+                                    <p class="formulario_error"></p>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 fa-solid fa-circle-x fa-circle-check">
 
                                     <label class="form-label">Duración de la película</label>
                                     <input class="form-control" id="duracion" type="number" name="duracion"
                                         placeholder="Duración de la película" min="0">
-
+                                    <p class="formulario_error"></p>
                                 </div>
 
                                 <div class="mb-3">
@@ -149,7 +151,7 @@ $estilos = EstiloMusical::cases();
                         </div>
 
                         <div id="concierto">
-                            <form action="" method="post" id="formulario">
+                            <form action="" method="post" id="formularioConcierto">
 
                                 <!-- <input type="hidden" name="crear" value="concierto"> -->
 
