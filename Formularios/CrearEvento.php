@@ -11,7 +11,23 @@ spl_autoload_register(function ($class) {
 
 const AFORO_MAXIMO_CINE = 150;
 const AFORO_MAXIMO_CONCIERTO = 500;
+const CINE = "cine";
+const CONCIERTO = "concierto";
 
+if (isset($_POST["enviar"])) {
+    if ($_POST["enviar"] === CINE){
+        echo "Definitivamente, es cine";
+
+    } else if ($_POST["enviar"] === CONCIERTO) {
+        echo "Concierto";
+    }
+    
+}
+
+// https://www.php.net/manual/en/function.htmlspecialchars.php
+
+$generos = Genero::cases();
+$estilos = EstiloMusical::cases();
 
 
 
@@ -38,6 +54,7 @@ const AFORO_MAXIMO_CONCIERTO = 500;
                     </div>
 
                     <div class="card-body">
+
                         <div class="mb-3">
                             <label class="form-label">Evento</label>
                             <select class="form-select" aria-label="Default select example" name="evento" id="evento">
@@ -52,7 +69,7 @@ const AFORO_MAXIMO_CONCIERTO = 500;
                         <div id="cine">
                             <form action="CrearEvento.php" method="post" id="formulario">
 
-                                <input type="hidden" name="crear" value="cine">
+                                <!-- <input type="hidden" name="crear" value="cine"> -->
 
                                 <div class="mb-3">
                                     <label class="form-label">Nombre evento</label>
@@ -110,12 +127,14 @@ const AFORO_MAXIMO_CONCIERTO = 500;
                                 <div class="mb-3">
                                     <label class="form-label">Géneros de cine</label>
                                     
-                                    <?php foreach(Genero::cases() as $genero) { ?>
+                                    <?php for($i = 0; $i < count($generos)-1; $i++) {  ?>
                                         
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="<?=$genero->value?>" id="<?=$genero->value?>"
-                                                value="1">
-                                            <label class="form-check-label" for="<?=$genero->value?>"> <?=$genero->value?> </label>
+                                            <input class="form-check-input" type="checkbox" name="genero[]" id="<?=$generos[$i]->value?>"
+                                                value="<?=$generos[$i]->value?>">
+                                            <label class="form-check-label" for="<?=$generos[$i]->value?>"> <?=$generos[$i]->value?> </label>
+
+                                            <!-- <input type="hidden" name="genero[<?=$i?>]" value="Hola"> -->
                                         </div>
 
                                     <?php } ?>
@@ -123,7 +142,7 @@ const AFORO_MAXIMO_CONCIERTO = 500;
 
                                 </div>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <input type="submit" value="Enviar" class="btn btn-primary" name="enviar">
+                                    <input type="submit" value="<?= CINE ?>" class="btn btn-primary" name="enviar">
                                 </div>
 
                             </form>
@@ -132,12 +151,11 @@ const AFORO_MAXIMO_CONCIERTO = 500;
                         <div id="concierto">
                             <form action="" method="post" id="formulario">
 
-                                <input type="hidden" name="crear" value="concierto">
+                                <!-- <input type="hidden" name="crear" value="concierto"> -->
 
                                 <div class="mb-3">
                                     <label class="form-label">Nombre evento</label>
-                                    <input class="form-control" id="evento" type="text" name="nombre"
-                                        placeholder="Nombre del evento">
+                                    <input class="form-control" id="evento" type="text" name="nombre" placeholder="Nombre del evento">
                                 </div>
 
                                 <div class="mb-3">
@@ -185,11 +203,11 @@ const AFORO_MAXIMO_CONCIERTO = 500;
 
                                     <label class="form-label">Género musical</label>
                                     <select class="form-select" aria-label="Default select example" name="generomusical" id="generomusical">
-                                        <option selected="" style="display: none">Género musical</option>
+                                        <option selected style="display: none">Género musical</option>
                                         
-                                        <?php foreach(EstiloMusical::cases() as $estilo) { ?>
+                                        <?php for($i = 0; $i < count($estilos)-1; $i++) { ?>
                                         
-                                            <option value="<?=$estilo->value?>"><?=$estilo->value?></option>
+                                            <option value="<?=$estilos[$i]->value?>"><?=$estilos[$i]->value?></option>
 
                                         <?php } ?>
 
@@ -197,7 +215,7 @@ const AFORO_MAXIMO_CONCIERTO = 500;
 
                                 </div>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <input type="submit" value="Enviar" class="btn btn-primary" name="enviar">
+                                    <input type="submit" value="<?= CONCIERTO ?>" class="btn btn-primary" name="enviar">
                                 </div>
 
                             </form>
@@ -208,7 +226,9 @@ const AFORO_MAXIMO_CONCIERTO = 500;
         </div>
     </div>
 
-    <?php var_dump($_POST) ?>
+    <pre>
+        <?php var_dump($_POST) ?>
+    </pre>
 
     <script src="../js/script.js"></script>
 </body>

@@ -35,7 +35,7 @@ class Grupo implements LeerEscribirCSV{
     }
 
     public static function fromCSV(string $linea) : mixed {
-        $array = explode(";", $linea);
+        $array = explode("$/$", $linea);
 
         return new Grupo ($array[0], EstiloMusical::fromValue($array[1]));
     }

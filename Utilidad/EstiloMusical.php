@@ -12,8 +12,21 @@ enum EstiloMusical : string {
     case POP = "Pop";
     case TRAP = "Trap";
     case REGGAETON = "Reggaeton";
+
+    /**
+     * Tiene que ser SIEMPRE el ultimo
+     */
     case NONE = "None";
 
+    public static function fromValue(string $value) : EstiloMusical{
+
+        $array = array_filter(EstiloMusical::cases(), function (EstiloMusical $g) use ($value) {
+            return $g->value === $value;
+        });
+
+        return (!empty($array))?$array[0]:EstiloMusical::NONE;
+    }
+/*
     public static function fromValue(string $value) : EstiloMusical {
         $estilo = EstiloMusical::NONE;
 
@@ -52,7 +65,7 @@ enum EstiloMusical : string {
 
         return $estilo;
     }
-
+*/
 }
 
 ?>
