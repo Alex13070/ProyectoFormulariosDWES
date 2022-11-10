@@ -33,7 +33,7 @@ $eventosConcierto = [];
 $generos = Genero::cases();
 $estilos = EstiloMusical::cases();
 
-function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
+function formularioDatosEvento() {?>
 
     <div class="mb-3">
         <label class="form-label">Nombre</label>
@@ -104,7 +104,7 @@ function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
                         <div id="cine">
                             <form action="ComprarEntrada.php" method="post" id="formularioCine" class="needs-validation <?= ($noExitoso && isset($_POST["enviar"]) && $_POST["enviar"] === CINE) ? "was-validated":"" ?>" novalidate>
 
-                                <?= formularioDatosEvento(AFORO_MAXIMO_CINE, TARIFA_MAXIMA_CINE) ?>
+                                <?= formularioDatosEvento() ?>
 
                                 <div class="mb-3" id="nombre__evento">
                                     <label class="form-label">Nombre evento</label>
@@ -189,7 +189,7 @@ function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
                         <div id="concierto">
                             <form action="CrearEvento.php" method="post" id="formularioConcierto" class="needs-validation <?= ($noExitoso && isset($_POST["enviar"]) && $_POST["enviar"] === CONCIERTO) ? "was-validated":"" ?>" novalidate>
 
-                                <?= formularioDatosEvento(AFORO_MAXIMO_CONCIERTO, TARIFA_MAXIMA_CONCIERTO) ?>
+                                <?= formularioDatosEvento() ?>
 
                                 <div class="mb-3">
 
