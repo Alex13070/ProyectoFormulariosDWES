@@ -37,13 +37,13 @@ class Concierto extends Evento implements LeerEscribirCSV{
 	public static function fromCSV(string $linea) : mixed{
         $array = explode(";", $linea);
         $concierto = new Concierto (
-            $array[0], 
-            Fecha::fromDDMMYYYY($array[1]), 
-            $array[2], 
-            intval($array[3]), 
-            intval($array[4])
+            $array[1], 
+            Fecha::fromDDMMYYYY($array[2]), 
+            $array[3], 
+            intval($array[4]), 
+            intval($array[5])
         );
-        $concierto->setGrupo(Grupo::fromCSV($array[5]));
+        $concierto->setGrupo(Grupo::fromCSV($array[6]));
 
         return $concierto;
 	}

@@ -36,8 +36,9 @@ class Cine extends Evento {
 	public static function fromCSV(string $linea) : mixed {
         $array = explode(";Pelicula;", $linea);
         $datosCine = explode(";", $array[0]);
-        $cine = new Cine ($datosCine[0], Fecha::fromDDMMYYYY($datosCine[1]), $datosCine[2], intval($datosCine[3]), intval($datosCine[4]));
+        $cine = new Cine ($datosCine[1], Fecha::fromDDMMYYYY($datosCine[2]), $datosCine[3], intval($datosCine[4]), intval($datosCine[5]));
         $cine->setPelicula(Pelicula::fromCSV($array[1]));
+        
         return $cine;
 	}
 }
