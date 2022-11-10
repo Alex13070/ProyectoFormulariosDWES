@@ -1,24 +1,37 @@
 const form = document.getElementById("formularioCine");
 const inputs = document.querySelectorAll('#formularioCine');
 
-const expresiones = {
+const password = /^.{4,12}$/;
+const evento = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+
+/*const expresiones = {
+	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^.{4,12}$/, // 4 a 12 digitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+    fecha: /^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})(\s)([0-1][1-9]|[2][0-3])(:)([0-5][0-9])$/
+}
+*/
+const validarCampo = (expresion,input,campo)=>{
+
+    if(expresion.test(input.value)){
+        document.getElementById(`cine__${campo}`).classList.remove('fa-solid fa-circle-x');
+        document.getElementById(`cine__${campo}`).classList.add('fa-solid fa-circle-check');
+        document.querySelector(`#cine__${campo} .formulario_error`).classList.remove();
+        
+    }else{
+        document.getElementById(`cine__${campo}`).classList.remove('fa-solid fa-circle-check');
+        document.getElementById(`cine__${campo}`).classList.add('fa-solid fa-circle-x');
+        document.querySelector(`#cine__${campo} .formulario_error`).classList.add();
+    }
 
 }
-
 
 const validarFormulario = (e)=>{
     switch (e.target.name){
         case "evento":
-            if(e.target.value ){
-                document.getElementById('nombre__evento').classList.remove('fa-solid fa-circle-x');
-                document.getElementById('nombre__evento').classList.add('fa-solid fa-circle-check');
-                document.querySelector('#nombre__evento .formulario_error').classList.remove();
-                
-            }else{
-                document.getElementById('nombre__evento').classList.remove('fa-solid fa-circle-check');
-                document.getElementById('nombre__evento').classList.add('fa-solid fa-circle-x');
-                document.querySelector('#nombre__evento .formulario_error').classList.add();
-            }
+           validarCampo(evento,e.target,e.target.name);
         break;
         case "fecha":
 
@@ -35,6 +48,9 @@ const validarFormulario = (e)=>{
         case "nombrepelicula":
 
         break;
+        case "duracionPelicula":
+
+        break;
     }
 }
 
@@ -43,36 +59,3 @@ inputs.forEach((input)=>{
     input.addEventListener('blur',validarFormulario);
 });
 
-
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    let warning = "";
-    let correcto = false;
-    let vemail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    parrafo.innerHTML = "";
-    if(nombre.value.length < 3){
-        warning += `El nombre es muy corto<br>`;
-        correcto = true;
-    }
-    if(apellidos.value.length < 10){
-        warning += `Los apellidos son muy cortos<br>`;
-        correcto = true;
-    }
-    if(!vemail.test(email.value)){
-        warning += `Formato de email incorrecto<br>`;
-        correcto = true;
-    }
-    if(edad.value > 150){
-        warning += `Edad incorrecta<br>`;
-        correcto = true;
-    }
-    if(password.value.length < 8){
-        warning += `La contraseña no es valida<br>`;
-        correcto = true;
-    }
-    if(correcto){
-        parrafo.innerHTML = warning;
-    }else{
-        alert("Formulario enviado correctamente");
-    }
-})

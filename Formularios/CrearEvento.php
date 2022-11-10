@@ -123,6 +123,44 @@ function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
 
                                 <?= formularioDatosEvento(AFORO_MAXIMO_CINE, TARIFA_MAXIMA_CINE) ?>
 
+                                <div class="mb-3" id="nombre__evento">
+                                    <label class="form-label">Nombre evento</label>
+                                    <input class="form-control" id="evento" type="text" name="nombre"
+                                        placeholder="Nombre del evento">
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">Fecha del evento</label>
+                                    <input class="form-control" id="fecha" type="date" name="fecha"
+                                        placeholder="dd/mm/yyyy">
+                                    <p class="formulario_error"></p>
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">Lugar evento</label>
+                                    <input class="form-control" id="lugar" type="text" name="lugar"
+                                        placeholder="Lugar del evento">
+                                    <p class="formulario_error"></p>
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">Tarifa</label>
+                                    <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0">
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">Aforo máximo</label>
+                                    <input class="form-control" id="aforo" type="number" name="aforo"
+                                        placeholder="Aforo máximo (0-<?= AFORO_MAXIMO_CINE ?>)" min="0"
+                                        max="<?= AFORO_MAXIMO_CINE ?>">
+                                    <p class="formulario_error"></p>    
+                                </div>
+
                                 <div class="mb-3">
 
                                     <label class="form-label">Nombre de la película</label>
