@@ -1,5 +1,7 @@
 <?php
 
+namespace Utilidad;
+
 enum Regex : string {
 
 
