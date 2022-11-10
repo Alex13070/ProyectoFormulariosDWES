@@ -2,13 +2,29 @@
 namespace Formularios;
 
 use Exception;
+use Utilidad\Regex;
 use Utilidad\EstiloMusical;
 use Utilidad\Fecha;
 use Utilidad\Genero;
 
 class Validaciones
 {
+
+    public static function validarNombre(string $campoNombre){
+        if(preg_match(Regex::NOMBRE->value, $_POST[$campoNombre])){
+        }else $errores["nombre"] = 'Solo se permiten letras, espacios, guiones y numeros';
+    }
     
+    public static function validarNumero(string $campoNumero){
+        if(preg_match(Regex::NUMERO->value, $_POST[$campoNumero])){
+        }else $errores["numero"] = 'Solo se permiten numeros';
+    }
+
+    public static function validarTelefono(string $campoTelefono){
+        if(preg_match(Regex::TELEFONO->value, $_POST[$campoTelefono])){
+        }else $errores["teleno"] = 'Solo se permiten numeros';
+    }
+
 }
 
 
