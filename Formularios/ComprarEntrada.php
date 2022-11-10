@@ -10,12 +10,6 @@ spl_autoload_register(function ($class) {
     require("$classPath${file}.php");
 });
 
-const TARIFA_MAXIMA_CINE = 20;
-const TARIFA_MAXIMA_CONCIERTO = 120;
-const AFORO_MAXIMO_CINE = 150;
-const AFORO_MAXIMO_CONCIERTO = 500;
-const CINE = "Crear evento cine";
-const CONCIERTO = "Crear evento concierto";
 
 const REGEX = [
     "texto" => "[a-zA-Z0-9]{1,}", // Acepta numeros, y letras mayusculas y minusculas
@@ -36,7 +30,8 @@ if (isset($_POST["enviar"])) {
     
 }
 
-
+$eventoCine = [];
+$eventosConcierto = [];
 
 // https://www.php.net/manual/en/function.htmlspecialchars.php
 
@@ -120,7 +115,7 @@ function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
 
 
                         <div id="cine">
-                            <form action="CrearEvento.php" method="post" id="formularioCine" class="needs-validation <?= ($noExitoso && isset($_POST["enviar"]) && $_POST["enviar"] === CINE) ? "was-validated":"" ?>" novalidate>
+                            <form action="ComprarEntrada.php" method="post" id="formularioCine" class="needs-validation <?= ($noExitoso && isset($_POST["enviar"]) && $_POST["enviar"] === CINE) ? "was-validated":"" ?>" novalidate>
 
                                 <?= formularioDatosEvento(AFORO_MAXIMO_CINE, TARIFA_MAXIMA_CINE) ?>
 
