@@ -51,7 +51,7 @@ function formularioDatosEvento() {?>
     </div>
     <div class="mb-3">
         <label class="form-label">Teléfono</label>
-        <input class="form-control" id="lugar" type="text" name="lugar" placeholder="Numero de telefono" pattern="<?=REGEX["telefono"]?>" required>
+        <input class="form-control" id="telefono" type="text" name="telefono" placeholder="Numero de telefono" pattern="<?=REGEX["telefono"]?>" required>
         <div class="invalid-feedback">
             El formato de número de teléfono introducido es incorrecto o el teléfono no existe.
         </div>
