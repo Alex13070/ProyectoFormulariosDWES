@@ -16,9 +16,13 @@ a:link,a:visited,a:hover,a:active,a::after{
 }
 
 
-h2,p{
+h2,p,h1{
     -webkit-text-fill-color: white;
     text-shadow: 2px 2px 10px white;
+}
+
+h1{
+    text-align: center;
 }
 
 p{
@@ -28,7 +32,7 @@ p{
 .slider {
     z-index: 1;
     width: 75%;
-    height: 400px;
+    height: 380px;
     margin: auto;
     overflow: hidden;
 }
