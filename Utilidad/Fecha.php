@@ -128,14 +128,26 @@ class Fecha {
     }
 
     public function __toString() : string {
-        return "$this->day/$this->month/$this->year";
+        return "$this->day-$this->month-$this->year";
     }
 
+    /**
+     * Parsea una fecha desde un string 
+     * @param string $fecha Linea con un string con fecha formato YYYY-MM-DD
+     */
+    public static function fromYYYYMMDD(string $fecha) : Fecha {
+        $date = explode("-", $fecha);
+        return new Fecha (intval($date[2]), intval($date[1]), intval($date[0]));
+    }
+
+    /**
+     * Parsea una fecha desde un string 
+     * @param string $fecha Linea con un string con fecha formato DD-MM-YYYY
+     */
     public static function fromDDMMYYYY(string $fecha) : Fecha {
-        $date = explode("/", $fecha);
+        $date = explode("-", $fecha);
         return new Fecha (intval($date[0]), intval($date[1]), intval($date[2]));
     }
-
     
 }
 
