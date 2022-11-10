@@ -1,8 +1,9 @@
 <?php
 namespace Formularios;
-use Fecha;
-use Genero;
 
+use Exception;
+use Utilidad\EstiloMusical;
+use Utilidad\Fecha;
 
 class Validaciones
 {
@@ -175,9 +176,9 @@ if(!empty($_POST["generomusical[]"])){
 
 function validar()
 {
-    if (!empy($_POST)) {
+    if (!empty($_POST)) {
         if (isset($_POST["enviar"])) {
-            if ($POST["enviar"] == CINE) {
+            if ($_POST["enviar"] == CINE) {
                 // Creo y valido datpos de cine
             }
             else if ($_POST["enviar"]  === CONCIERTO) {
