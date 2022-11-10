@@ -11,11 +11,6 @@ spl_autoload_register(function ($class) {
 });
 
 
-const REGEX = [
-    "texto" => "[a-zA-Z0-9]{1,}", // Acepta numeros, y letras mayusculas y minusculas
-
-];
-
 $noExitoso = true;
 
 if (isset($_POST["enviar"])) {
@@ -38,46 +33,38 @@ $eventosConcierto = [];
 $generos = Genero::cases();
 $estilos = EstiloMusical::cases();
 
-
-
 function formularioDatosEvento($aforoMaximo, $tarifaMaxima) {?>
 
-    <div class="mb-3" id="nombre__evento">
-        <label class="form-label">Nombre evento</label>
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
         <input class="form-control" id="evento" type="text" name="nombre" placeholder="Nombre del evento" pattern="<?=REGEX["texto"]?>" required>
         <div class="invalid-feedback">
             El nombre solo puede contener letras mayúsculas, letras minúsculas y números.
         </div>
     </div>
     <div class="mb-3">
-        <label class="form-label">Fecha del evento</label>
-        <input class="form-control" id="fecha" type="date" name="fecha" placeholder="dd/mm/yyyy" required>
+        <label class="form-label">Correo</label>
+        <input class="form-control" id="correo" type="email" name="correo" placeholder="Nombre@abcd.ef" pattern="<?=REGEX["correo"]?>" required>
         <div class="invalid-feedback">
-            La fecha debe de ser posterior a la actual.
+            El formato de correo introducido es incorrecto.
         </div>
     </div>
     <div class="mb-3">
-        <label class="form-label">Lugar evento</label>
-        <input class="form-control" id="lugar" type="text" name="lugar" placeholder="Lugar del evento" pattern="<?=REGEX["texto"]?>" required>
+        <label class="form-label">Teléfono</label>
+        <input class="form-control" id="lugar" type="text" name="lugar" placeholder="Numero de telefono" pattern="<?=REGEX["telefono"]?>" required>
         <div class="invalid-feedback">
-            El lugar del evento solo puede contener letras mayúsculas, letras minúsculas y números..
+            El formato de número de teléfono introducido es incorrecto o el teléfono no existe.
         </div>
     </div>
     <div class="mb-3">
-        <label class="form-label">Tarifa</label>
-        <input class="form-control" id="Tarifa" type="number" name="tarifa" placeholder="tarifa" min="0" max="<?=$tarifaMaxima?>" required>
+        <label class="form-label">Sexo</label>
+        Hombre:  <input type="radio" name="sexo" required>
+        Mujer: <input type="radio" name="sexo" required>
+        Otro: <input type="radio" name="sexo" required>
         <div class="invalid-feedback">
-            La tarifa debe de ser positiva
+            Debe seleccionar un sexo.
         </div>
     </div>
-    <div class="mb-3 ">
-        <label class="form-label">Aforo máximo</label>
-        <input class="form-control" id="aforo" type="number" name="aforo" placeholder="Aforo máximo (0-<?= $aforoMaximo ?>)" min="0" max="<?= $aforoMaximo ?>" required>    
-        <div class="invalid-feedback">
-            El aforo máximo debe de estar entre 0 y <?= AFORO_MAXIMO_CINE ?>
-        </div>
-    </div>
-
 <?php }?>
 
 <!DOCTYPE html>
