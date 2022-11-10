@@ -4,6 +4,7 @@ namespace Formularios;
 use Exception;
 use Utilidad\EstiloMusical;
 use Utilidad\Fecha;
+use Utilidad\Genero;
 
 class Validaciones
 {

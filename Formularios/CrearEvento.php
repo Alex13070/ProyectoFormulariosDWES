@@ -18,7 +18,7 @@ const CINE = "Crear evento cine";
 const CONCIERTO = "Crear evento concierto";
 
 const REGEX = [
-    "texto" => "[a-zA-Z0-9]{1,}", // Acepta numeros, y letras mayusculas y minusculas
+    "texto" => "[a-zA-Z0-9á-¨Y]{1,}", // Acepta numeros, y letras mayusculas y minusculas
 
 ];
 

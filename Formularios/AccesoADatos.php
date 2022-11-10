@@ -9,6 +9,8 @@ use Eventos\FactoriaEvento;
 use Exception;
 
 class AccesoADatos {
+
+    private array $eventos;
     
     private static AccesoADatos $singletone;
 
