@@ -49,4 +49,10 @@ class Entrada implements LeerEscribirCSV{
     }
 
     
+	/**
+	 * @return bool
+	 */
+	public function validarDatos(): bool {
+        
+	}
 }

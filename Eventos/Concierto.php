@@ -47,6 +47,10 @@ class Concierto extends Evento implements LeerEscribirCSV{
 
         return $concierto;
 	}
+
+	public function validarDatos(): bool {
+       
+	}
 }
 
 ?>
