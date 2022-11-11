@@ -200,8 +200,12 @@ $estilos = EstiloMusical::cases();
         <?php var_dump($_POST) ?>
     </pre>
 
+   
+
     <script src="../js/script.js"></script>
     <script src="../js/formularioBootsrap.js"></script>
 </body>
+
+
 
 </html>
