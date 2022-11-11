@@ -17,10 +17,10 @@
                 <a href="../Formularios/CrearEvento.php">
                     <div class="capa"></div>
                     <ul>
-                        <li><img src="../fotos/cine3.jpg" class="card-img"></li>
-                        <li><img src="../fotos/concierto1.jpg" class="card-img"></li>
-                        <li><img src="../fotos/cine2.jpg" class="card-img"></li>
-                        <li><img src="../fotos/concierto2.jpg" class="card-img"></li>
+                        <li><img src="../img/cine3.jpg" class="card-img"></li>
+                        <li><img src="../img/concierto1.jpg" class="card-img"></li>
+                        <li><img src="../img/cine2.jpg" class="card-img"></li>
+                        <li><img src="../img/concierto2.jpg" class="card-img"></li>
                     </ul>
                     <div class="card-img-overlay contenido">
                         <h2 class="card-title">Crear evento</h2>
@@ -35,10 +35,10 @@
                 <a href="../Formularios/ComprarEntrada.php">
                     <div class="capa"></div>
                     <ul>
-                        <li><img src="../fotos/Rammstein3.jpg" class="card-img"></li>
-                        <li><img src="../fotos/shrek.png" class="card-img"></li>
-                        <li><img src="../fotos/shrek2.jpg" class="card-img"></li>
-                        <li><img src="../fotos/comosiesascosaspasaran.jpeg" class="card-img"></li>
+                        <li><img src="../img/Rammstein3.jpg" class="card-img"></li>
+                        <li><img src="../img/shrek.png" class="card-img"></li>
+                        <li><img src="../img/shrek2.jpg" class="card-img"></li>
+                        <li><img src="../img/comosiesascosaspasaran.jpeg" class="card-img"></li>
                     </ul>
                     <div class="card-img-overlay contenido">
                         <h2 class="card-title">Reservar entradas</h2>
