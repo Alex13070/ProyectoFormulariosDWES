@@ -33,7 +33,7 @@
 
         <div class="item">
             <div class="card bg-dark text-blue slider">
-                <a href="">
+                <a href="../Formularios/ComprarEntrada.php">
                     <div class="capa"></div>
                     <ul>
                         <li><img src="../fotos/Rammstein3.jpg" class="card-img"></li>
