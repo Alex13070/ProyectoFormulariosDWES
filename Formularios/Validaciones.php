@@ -22,7 +22,12 @@ class Validaciones
 
     public static function validarTelefono(string $campoTelefono){
         if(preg_match(Regex::TELEFONO->value, $_POST[$campoTelefono])){
-        }else $errores["teleno"] = 'Solo se permiten numeros';
+        }else $errores["telefono"] = 'Introduce el formato correcto para un número de telefono';
+    }
+
+    public static function validarCorreo(string $campoCorreo){
+        if(preg_match(Regex::CORREO->value, $_POST[$campoCorreo])){
+        }else $errores["correo"] = 'Solo se permiten numeros';
     }
 
 }
