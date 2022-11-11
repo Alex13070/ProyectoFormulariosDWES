@@ -39,6 +39,28 @@ class Grupo implements LeerEscribirCSV{
 
         return new Grupo ($array[0], EstiloMusical::fromValue($array[1]));
     }
+    
+        //VALIDACIONES DE GRUPO (HAY QUE MODIFICARLAS)
+    public static function validarNombreGrupo(){
+        if(isset($_POST["nombregrupo"]) && !empty($_POST["nombregrupo"])){
+            $nombre = $_POST["nombregrupo"];
+        }else {
+            $errores["nombregrupo"] = 'Escribe el nombre de el grupo';
+        }
+    }
+
+    public static function validarEstiloGrupo(){
+        $correcto=true;
+        $cont=0;
+        if(!empty($_POST["estilomusical[]"])){
+            for($i=0; $i<count($_POST["estilomusical[]"]) && $correcto; $i++){
+                if(EstiloMusical::fromValue($_POST["estilomusical[".$i."]"]) == EstiloMusical::NONE){
+                    $errores["estilomusical"] = "Genero musical no valido";
+                    $correcto=false;
+                }else $estilomusical[$cont++] = $_POST["estilomusical[".$i."]"];  
+            }
+        }else $errores["estilomusical[]"] = "No ha introducido ningun genero musical";
+    }
 }
 
 ?>

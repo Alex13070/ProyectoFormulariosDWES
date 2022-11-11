@@ -71,6 +71,37 @@ class Pelicula implements LeerEscribirCSV{
                 return $acumulador . ";" . $genero->value;
             }, "");
     }
-}
 
+    //VALIDACIONES DE PELICULA (HAY QUE MODIFICARLAS)
+    public static function validarNombrePelicula(){
+        if(isset($_POST["nombrepelicula"]) && !empty($_POST["nombrepelicula"])){
+            $nombre = $_POST["nombrepelicula"];
+        }else {
+            $errores["nombrepelicula"] = 'Escribe el nombre de la película';
+        }
+    }
+
+    public static function validarDuracionPelicula(){
+        if(empty($_POST["duracion"]) || !is_int($_POST["duracion"])){
+            $errores["duracion"] = 'Escribe la duración de la película';
+        }else {
+            if($_POST["duracion"]>0){
+                $duracion = $_POST["duracion"];
+            }else $errores["duracion"] = 'La duración no puede ser negativa';
+        }
+    }
+
+    public static function validarGeneroPelicula(){
+        $correcto=true;
+        $cont=0;
+        if(!empty($_POST["genero[]"])){
+            for($i=0; $i<count($_POST["genero[]"]) && $correcto; $i++){
+                if(Genero::fromValue($_POST["genero[".$i."]"]) == Genero::NONE){
+                    $errores["genero"] = "Genero no valido";
+                    $correcto=false;
+                }else $genero[$cont++] = $_POST["genero[".$i."]"];  
+            }
+        }else $errores["genero[]"] = "No ha introducido ningun genero";
+    }
+}
 ?>

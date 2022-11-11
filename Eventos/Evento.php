@@ -5,6 +5,7 @@ namespace Eventos;
 use Exception;
 use Utilidad\Fecha;
 use Utilidad\LeerEscribirCSV;
+use Utilidad\Regex;
 
 abstract class Evento implements LeerEscribirCSV{
 
@@ -81,6 +82,52 @@ abstract class Evento implements LeerEscribirCSV{
         return $this->nombre . ";" . $this->fecha->__toString() . ";" . $this->lugar . ";" . $this->tarifa . ";" . $this->aforoMaximo;
     }
 
-}
+    //VALIDACIONES DE EVENTO (HAY QUE MODIFICARLAS)
+    public static function validarNombreEvento(){
+        if(empty($_POST["nombre"])){
+            $errores["nombre"] = 'Escribe un nombre';
+        }else {
+            if(preg_match(Regex::NOMBRE->value, $_POST['nombre'])){
+                $nombre = $_POST["nombre"];
+            }else $errores["nombre"] = 'Solo se permiten letras, espacios y guiones';
+        }
+    }
 
+    public static function validarFechaEvento(){
+        $fechatoDate = Fecha::fromDDMMYYYY($_POST["fecha"]);
+        if($fechatoDate->despuesDeHoy()==false || empty($_POST["fecha"])){
+            $errores["fecha"] = "Escribe una fecha valida";
+        }else $fecha = $_POST["fecha"];
+    }
+
+    public static function validarLugarEvento(){
+        if(empty($_POST["lugar"])){
+            $errores["lugar"] = 'Escribe una calle';
+        }else {
+            if(preg_match(Regex::NOMBRE->value, $_POST['lugar'])){
+                $lugar = $_POST["lugar"];
+            }else $errores["lugar"] = 'Escribe la calle correctamente';
+        }
+    }
+
+    public static function validarTarifaEvento(){
+        if(empty($_POST["tarifa"]) || !is_int($_POST["tarifa"])){
+            $errores["tarifa"] = 'Escribe una tarifa';
+        }else {
+            if($_POST["tarifa"]>=0 && $_POST["tarifa"]<=20){
+                $tarifa = $_POST["tarifa"];
+            }else $errores["tarifa"] = 'Tarifa maxima = 20€';
+        }
+    }
+
+    public static function validarAforoEvento(){
+        if(empty($_POST["aforo"]) || !is_int($_POST["aforo"])){
+            $errores["aforo"] = 'Escribe un aforo';
+        }else {
+            if($_POST["aforo"]>=0 && $_POST["aforo"]<=150){
+                $aforo = $_POST["aforo"];
+            }else $errores["aforo"] = 'Aforo maximo = 150 personas';
+        }
+    }
+}
 ?>
