@@ -58,6 +58,11 @@ class AccesoADatos {
             return FactoriaEvento::getEventoFromCSV($linea);
         }, $array);
     }
+
+    public function getEventos(){
+        return $this->eventos;
+    }
+
 }
 
 ?>
