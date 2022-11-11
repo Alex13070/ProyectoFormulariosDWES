@@ -4,6 +4,7 @@ namespace Eventos;
 
 use Utilidad\Genero;
 use Utilidad\LeerEscribirCSV;
+use Formularios\Validaciones;
 
 
 class Pelicula implements LeerEscribirCSV{
@@ -73,6 +74,8 @@ class Pelicula implements LeerEscribirCSV{
     }
 
     //VALIDACIONES DE PELICULA (HAY QUE MODIFICARLAS)
+
+   /* 
     public static function validarNombrePelicula(){
         if(isset($_POST["nombrepelicula"]) && !empty($_POST["nombrepelicula"])){
             $nombre = $_POST["nombrepelicula"];
@@ -80,7 +83,10 @@ class Pelicula implements LeerEscribirCSV{
             $errores["nombrepelicula"] = 'Escribe el nombre de la película';
         }
     }
+    */
+    public function validarNombrePelicula(){
 
+    }
     public static function validarDuracionPelicula(){
         if(empty($_POST["duracion"]) || !is_int($_POST["duracion"])){
             $errores["duracion"] = 'Escribe la duración de la película';

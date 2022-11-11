@@ -41,6 +41,7 @@ class Grupo implements LeerEscribirCSV{
     }
     
         //VALIDACIONES DE GRUPO (HAY QUE MODIFICARLAS)
+    /*
     public static function validarNombreGrupo(){
         if(isset($_POST["nombregrupo"]) && !empty($_POST["nombregrupo"])){
             $nombre = $_POST["nombregrupo"];
@@ -48,7 +49,7 @@ class Grupo implements LeerEscribirCSV{
             $errores["nombregrupo"] = 'Escribe el nombre de el grupo';
         }
     }
-
+    */
     public static function validarEstiloGrupo(){
         $correcto=true;
         $cont=0;

@@ -40,9 +40,9 @@ class Validaciones
     public function validarCorreo(string $campoCorreo) : bool{
         return $this->validar(Regex::CORREO, $campoCorreo);
     }
-
+    
     private function validar(Regex $regex, string $campo ) : bool {
-        return preg_match($regex->value, $this->peticion[$campo]);
+        return isset($this->peticion[$campo]) && preg_match($regex->value, $this->peticion[$campo]);
     }
 
 }

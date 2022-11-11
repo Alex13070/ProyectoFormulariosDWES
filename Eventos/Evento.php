@@ -83,6 +83,7 @@ abstract class Evento implements LeerEscribirCSV{
     }
 
     //VALIDACIONES DE EVENTO (HAY QUE MODIFICARLAS)
+    /*
     public static function validarNombreEvento(string $nombreEvento){
         if(empty($_POST["nombre"])){
             $errores["nombre"] = 'Escribe un nombre';
@@ -91,7 +92,7 @@ abstract class Evento implements LeerEscribirCSV{
                 $nombre = $_POST["nombre"];
             }else $errores["nombre"] = 'Solo se permiten letras, espacios y guiones';
         }
-    }
+    */
 
     public static function validarFechaEvento(){
         $fechatoDate = Fecha::fromDDMMYYYY($_POST["fecha"]);

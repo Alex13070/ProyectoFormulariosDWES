@@ -41,6 +41,7 @@ class Cine extends Evento {
         
         return $cine;
 	}
+
 }
 
 ?>
