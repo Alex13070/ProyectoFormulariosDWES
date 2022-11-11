@@ -70,6 +70,8 @@ function formularioDatosEvento() {?>
 const TARIFA_MAXIMA_CINE = 20;
 const TARIFA_MAXIMA_CONCIERTO = 120;
 const MINIMO_GENERICO = 0;
+const COMPRAR_ENTRADAS = "Comprar entradas";
+
 
 
 function generaEventos(array $opciones) { ?>
@@ -128,7 +130,7 @@ function generaEventos(array $opciones) { ?>
                                 <?= generaEventos($_POST["genero[]"]) ?>
 
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <input type="submit" value="<?= CINE ?>" class="btn btn-primary" name="enviar">
+                                    <input type="submit" value="<?= COMPRAR_ENTRADAS ?>" class="btn btn-primary" name="enviar">
                                 </div>
 
                             </form>
@@ -147,7 +149,7 @@ function generaEventos(array $opciones) { ?>
                                 <?= generaEventos($_POST["genero[]"]) ?>
                                 
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <input type="submit" value="<?= CONCIERTO ?>" class="btn btn-primary" name="enviar">
+                                    <input type="submit" value="<?= COMPRAR_ENTRADAS ?>" class="btn btn-primary" name="enviar">
                                 </div>
                             </form>
                         </div>
