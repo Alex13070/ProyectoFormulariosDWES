@@ -41,6 +41,11 @@ class Cine extends Evento {
         
         return $cine;
 	}
+
+
+	public function validarDatos(): bool {
+       
+	}
 }
 
 ?>

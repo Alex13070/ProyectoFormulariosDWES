@@ -96,6 +96,9 @@ class Usuario implements LeerEscribirCSV {
     public function toCSV() : string {
         return $this->nombre . ";" . $this->correo . ";" . $this->telefono . /*";" . $this->password .*/ ";" . $this->sexo;
     }
+
+	public function validarDatos(): bool {
+	}
 }
 
 ?>

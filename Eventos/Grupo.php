@@ -61,6 +61,9 @@ class Grupo implements LeerEscribirCSV{
             }
         }else $errores["estilomusical[]"] = "No ha introducido ningun genero musical";
     }
+    
+	public function validarDatos(): bool {
+	}
 }
 
 ?>

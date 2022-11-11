@@ -103,5 +103,8 @@ class Pelicula implements LeerEscribirCSV{
             }
         }else $errores["genero[]"] = "No ha introducido ningun genero";
     }
+
+	public function validarDatos(): bool {
+	}
 }
 ?>
