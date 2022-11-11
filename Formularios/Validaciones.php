@@ -22,7 +22,6 @@ class Validaciones
                 break;
             default:
                 throw new Exception("Metodo no soportado");
-                break;
         }
     }
 
