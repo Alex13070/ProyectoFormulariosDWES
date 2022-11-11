@@ -9,8 +9,9 @@ class FactoriaEvento {
     private const CINE = "Cine";
     private const CONCIERTO = "Concierto";
 
+    // Concierto;...;...
     public static function getEventoFromCSV(string $lineaEvento) : Evento{
-        $tipo = explode(";", $lineaEvento);
+        $tipo = explode(";", $lineaEvento)[0];
         $evento = null;
 
         switch ($tipo) {

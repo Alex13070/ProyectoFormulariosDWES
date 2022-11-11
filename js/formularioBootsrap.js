@@ -1,5 +1,4 @@
 document.querySelectorAll("form").forEach((form) => {
-
     form.addEventListener('submit', (event) => {
         if (!form.checkValidity()) {
             event.preventDefault();
@@ -8,12 +7,11 @@ document.querySelectorAll("form").forEach((form) => {
     
         form.classList.add('was-validated');
     }, false);
-    
 });
 
 
 // Validar los checkbox
-const checkboxes = document.getElementById("formularioCine").querySelectorAll('input[type=checkbox]');
+const checkboxes = document.getElementById("formularioEvento").querySelectorAll('input[type=checkbox]');
 
 function atLeastOneCheckboxIsChecked() {
     const checkboxes = Array.from(document.querySelectorAll(".checkbox"));
@@ -38,7 +36,6 @@ function isChecked() {
 
 function checkValidity() {
     const errorMessage = !isChecked() ? 'Tiene que haber al menos un checkbox seleccionado.' : '';
-
     checkboxes.forEach((chk) => {
         chk.setCustomValidity(errorMessage)
     });

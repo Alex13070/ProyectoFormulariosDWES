@@ -26,7 +26,7 @@ class Concierto extends Evento implements LeerEscribirCSV{
     public function setGrupo(Grupo $grupo){
         $this->grupo = $grupo;
     }
-
+    // Concierto;...;...;...
     public function toCSV() : string {
         return "Concierto;" . 
             parent::toCSV() . ";" . 

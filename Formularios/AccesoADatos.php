@@ -24,13 +24,9 @@ class AccesoADatos {
 
     public function guardarEvento(Evento $evento) {
 
-        if (gettype($evento) === "Cine") {
+        if (gettype($evento) === "Cine" || gettype($evento) === "Concierto") {
             $evento->toCSV();
             //TODO: Guardar en fichero de eventos de cine //TODO: Poner los ficheros
-
-        } else if (gettype($evento) === "Concierto") {
-            $evento->toCSV();
-            //TODO: Guardar en fichero de eventos de concierto
 
         }
         else {
@@ -40,24 +36,15 @@ class AccesoADatos {
         
     }
 
-    public function leerEventosCine() : array {
+    public function leerEventos() : array {
         $lineas = ""; //TODO: Poner los ficheros
         $array = explode("\n", $lineas);
 
-        return array_map(function (string $linea) : Cine{  
+        return array_map(function (string $linea) : Evento{  
             return FactoriaEvento::getEventoFromCSV($linea);
         }, $array);
     }
-
-    public function leerEventosConcierto() : array {
-        $lineas = ""; //TODO: Poner los ficheros
-        $array = explode("\n", $lineas);
-
-        return array_map(function (string $linea) : Concierto{  
-            //Usamos factoria por si acaso tenemos problemas
-            return FactoriaEvento::getEventoFromCSV($linea);
-        }, $array);
-    }
+    
 }
 
 ?>

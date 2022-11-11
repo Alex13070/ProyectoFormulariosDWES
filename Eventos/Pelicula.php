@@ -54,7 +54,7 @@ class Pelicula implements LeerEscribirCSV{
 
         $pelicula = new Pelicula($array[0], intval($array[1]));
 
-        for ($i=3; $i < intval($array[2]); $i++) { 
+        for ($i=3; $i < (3+intval($array[2])); $i++) { 
             $pelicula->addGenero(
                 Genero::fromValue($array[$i])
             );
