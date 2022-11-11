@@ -83,7 +83,7 @@ abstract class Evento implements LeerEscribirCSV{
     }
 
     //VALIDACIONES DE EVENTO (HAY QUE MODIFICARLAS)
-    public static function validarNombreEvento(){
+    public static function validarNombreEvento(string $nombreEvento){
         if(empty($_POST["nombre"])){
             $errores["nombre"] = 'Escribe un nombre';
         }else {

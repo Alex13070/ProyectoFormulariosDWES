@@ -6,28 +6,44 @@ use Utilidad\Regex;
 use Utilidad\EstiloMusical;
 use Utilidad\Fecha;
 use Utilidad\Genero;
+use Utilidad\HttpMethod;
 
 class Validaciones
 {
+    private array $peticion;
 
-    public static function validarNombre(string $campoNombre){
-        if(preg_match(Regex::NOMBRE->value, $_POST[$campoNombre])){
-        }else $errores["nombre"] = 'Solo se permiten letras, espacios, guiones y numeros';
+    public function __construct(HttpMethod $metodo){
+        switch ($metodo) {
+            case HttpMethod::GET:
+                $this->peticion = $_GET;
+                break;
+            case HttpMethod::POST:
+                $this->peticion = $_POST;
+                break;
+            default:
+                throw new Exception("Metodo no soportado");
+                break;
+        }
+    }
+
+    public function validarNombre(string $campoNombre) : bool{
+        return $this->validar(Regex::NOMBRE, $campoNombre);
     }
     
-    public static function validarNumero(string $campoNumero){
-        if(preg_match(Regex::NUMERO->value, $_POST[$campoNumero])){
-        }else $errores["numero"] = 'Solo se permiten numeros';
+    public function validarNumero(string $campoNumero ) : bool{
+        return $this->validar(Regex::NUMERO, $campoNumero);
     }
 
-    public static function validarTelefono(string $campoTelefono){
-        if(preg_match(Regex::TELEFONO->value, $_POST[$campoTelefono])){
-        }else $errores["telefono"] = 'Introduce el formato correcto para un número de telefono';
+    public function validarTelefono(string $campoTelefono) : bool{
+        return $this->validar(Regex::TELEFONO, $campoTelefono);
+     }
+
+    public function validarCorreo(string $campoCorreo) : bool{
+        return $this->validar(Regex::CORREO, $campoCorreo);
     }
 
-    public static function validarCorreo(string $campoCorreo){
-        if(preg_match(Regex::CORREO->value, $_POST[$campoCorreo])){
-        }else $errores["correo"] = 'Solo se permiten numeros';
+    private function validar(Regex $regex, string $campo ) : bool {
+        return preg_match($regex->value, $this->peticion[$campo]);
     }
 
 }
