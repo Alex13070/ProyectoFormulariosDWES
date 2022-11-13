@@ -9,7 +9,7 @@ class CrearFormulario{
     private HttpMethod $method;
     private string $action;
 
-    private array $campos;
+    private array $campos = [];
 
     public function addCampo(Campo $campo){
         

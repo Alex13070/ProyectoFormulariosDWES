@@ -64,8 +64,6 @@ abstract class Campo{
 
     public abstract function contenidoCampos() : string;
 
-
-
 }
 
 ?>

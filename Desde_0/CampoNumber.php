@@ -14,7 +14,7 @@ class CampoNumber extends CampoTexto{
         $this->placeholder = $placeholder;
     }
 
-    public function contenidoCampo() : string {
+    public function contenidoCampos() : string {
         return "
             <label class='form-label'>". $this->getLabel() ."</label>
             <input class='form-control' id='" . $this->getId() . "' type='" . $this->getType()->value . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."' min='" . $this->minimo . "' max='" . $this->maximo . "'>
