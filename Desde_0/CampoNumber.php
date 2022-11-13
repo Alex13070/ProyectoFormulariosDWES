@@ -7,7 +7,7 @@ class CampoNumber extends CampoTexto{
     private int $maximo;
     private int $minimo;
 
-    public function __construct(string $label = "", string $name = "",string $id = "",string $placeholder = "",mixed $minimo = "", mixed $maximo = "") {
+    public function __construct(string $label = "", string $name = "", string $id = "",string $placeholder = "",mixed $minimo = "", mixed $maximo = "") {
         parent::__construct($label, $name, TiposInput::NUMBER, $id, $placeholder);
         $this->minimo = $minimo;
         $this->maximo = $maximo;

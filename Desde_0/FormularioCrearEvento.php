@@ -10,12 +10,12 @@ spl_autoload_register(function ($class) {
 
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
-$nombre = new CampoTexto("Nombre","nb",TiposInput::TEXT,"nb1","Introduzca su nombre");
+$nombre = new CampoTexto("Nombre","nb",TiposInput::TEXT,"Introduzca su nombre","nb1");
 $aforo = new CampoNumber("Aforo","nb","nb","Introduzca el aforo",0,500);
 
-$form->addCampo($aforo);
+/*$form->addCampo($aforo);
 
-$form->addCampo($nombre);
+$form->addCampo($nombre);*/
 
 $email = new CampoEmail("Email","email","email","info@gmail.com");
 
