@@ -2,6 +2,7 @@
 
 namespace Desde_0;
 
+
 spl_autoload_register(function ($class) {
     $classPath = "../";
     $file = str_replace('\\', '/', $class);
@@ -20,6 +21,15 @@ $form->addCampo($nombre);
 $email = new CampoEmail("Email","email",TiposInput::EMAIL,"email","info@gmail.com");
 
 $form->addCampo($email);
+
+$opciones = new CampoRadio("Sexo","s",TiposInput::RADIO_BUTTON,"s","F");
+
+
+$opciones->addOpcion(new OpcionRadio("Hombre","a1","a","a"));
+$opciones->addOpcion(new OpcionRadio("Mujer","a2","a","a"));
+$opciones->addOpcion(new OpcionRadio("Raro","a3","a","a"));
+
+$form->addCampo($opciones);
 
 
 

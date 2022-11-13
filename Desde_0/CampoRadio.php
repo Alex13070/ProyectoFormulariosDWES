@@ -1,43 +1,34 @@
 <?php
 
+namespace Desde_0;
+use Desde_0\CampoMultiple;
 use Desde_0\TiposInput;
 
-class CampoRadio{
+class CampoRadio extends CampoMultiple{
 
-
-    private string $label;
     private string $value;
-    private string $id;
-    private string $name;
 
-
-    public function __construct(string $label, string $value, string $id, string $name) {
-        $this->label = $label;
+    public function __construct(string $label = "", string $name = "",TiposInput $type = TiposInput::RADIO_BUTTON, string $id = "",string $value = "") {
+        parent::__construct($label, $name, $type, $id);
+        $this->opciones = [];   
         $this->value = $value;
-        $this->id = $id;
-        $this->name = $name;
     }
 
-    public function getName() : string {
-        return $this->name;
-    }
 
-    public function setName(string $name) : CampoRadio {
-        $this->name = $name;
-        return $this;
-    }
 
-    public function getId() : string {
-        return $this->id;
-    }
+    public function contenidoCampos() : string {
+        return "<label class='form-label'>". $this->getLabel() ."</label>"       
+            . array_reduce($this->getOpciones(), function(string $acumulador, OpcionRadio $opcion) {
+                return $acumulador.$opcion->pintarOp();
+        }, "");
+    } 
 
-    public function setId(string $id) : CampoRadio {
-        $this->id = $id;
-        return $this;
-    }
+
+
     public function getValue(){
         return $this->value;
     }
+
 
     public function setValue($value){
         $this->value = $value;
@@ -45,29 +36,8 @@ class CampoRadio{
         return $this;
     }
 
-    public function getLabel(){
-        return $this->label;
-    }
-
-
-    public function setLabel($label){
-        $this->label = $label;
-
-        return $this;
-    }
-
-    public function contenidoCampos() : string {
-        return "
-        <div class='form-check'>
-            <input class='form-check-input' type='" . TiposInput::RADIO_BUTTON->value . "' name='" . $this->name . "' id='". $this->id ."' value='" . $this->getValue() . "'>
-            <label class='form-check-label' for='" . $this->id . "'> " . $this->getLabel() . " </label> 
-        </div>
-        ";
-    }
-
     
+
+
 }
-
-
-
 ?>
