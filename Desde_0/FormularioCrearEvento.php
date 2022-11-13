@@ -29,9 +29,9 @@ $fecha = new CampoFecha("Fecha del evento:","fecha",TiposInput::DATE,"fecha");
 $aforo = new CampoNumber("Aforo:","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500);
 $opciones = new CampoRadio("Sexo:","s",TiposInput::RADIO_BUTTON,"s","F");
 
-$opciones->addOpcion(new OpcionRadio("Hombre","hombre","h","sexo"));
-$opciones->addOpcion(new OpcionRadio("Mujer","mujer","m","sexo"));
-$opciones->addOpcion(new OpcionRadio("Otro","otros","o","sexo"));
+$opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre","sexo"));
+$opciones->addOpcion(new OpcionRadio("Mujer","Mujer","Mujer","sexo"));
+$opciones->addOpcion(new OpcionRadio("Otro","Otros","Otro","sexo"));
 
 $form->addCampo($nombre);
 $form->addCampo($email);

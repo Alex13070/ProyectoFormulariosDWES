@@ -60,7 +60,7 @@ class GenerarFormulario{
                     return $acu.$actual->crearCampo();
                 },"")."
                 <div class='d-grid gap-2 col-6 mx-auto'>
-                    <input type='submit' value='Generar PDF' class='btn btn-primary' name='enviar'>
+                    <input type='submit' value='Generar PDF' class='btn btn-primary' name='Enviar'>
                 </div>
                 </form>
             </div>
