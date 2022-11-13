@@ -3,7 +3,7 @@
 namespace Desde_0;
 use Desde_0\CampoTexto;
 use Desde_0\TiposInput;
-use Placeholder;
+
 
 class CampoEmail extends CampoTexto{
 

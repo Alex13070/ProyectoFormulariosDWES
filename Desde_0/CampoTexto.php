@@ -3,7 +3,7 @@
 namespace Desde_0;
 use Desde_0\Campo;
 use Desde_0\TiposInput;
-use Placeholder;
+
 
 class CampoTexto extends Campo{
 

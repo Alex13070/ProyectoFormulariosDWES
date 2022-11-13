@@ -55,7 +55,7 @@ class CampoRadio{
         return $this;
     }
 
-    public function pintarRadio() : string {
+    public function contenidoCampos() : string {
         return "
         <div class='form-check'>
             <input class='form-check-input' type='" . TiposInput::RADIO_BUTTON->value . "' name='" . $this->name . "' id='". $this->id ."' value='" . $this->getValue() . "'>
