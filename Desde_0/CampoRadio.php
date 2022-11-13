@@ -10,6 +10,7 @@ class CampoRadio{
     private string $id;
     private string $name;
 
+
     public function __construct(string $label, string $value, string $id, string $name) {
         $this->label = $label;
         $this->value = $value;

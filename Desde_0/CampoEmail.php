@@ -7,11 +7,11 @@ use Desde_0\TiposInput;
 
 class CampoEmail extends CampoTexto{
 
-    use Placeholder;
+    
 
     public function __construct(string $label = "", string $name = "", string $id = "", string $placeholder = "") {
         parent::__construct($label, $name, TiposInput::EMAIL, $id,$placeholder);
-        $this->placeholder = $placeholder;    
+           
     }
 
     public function contenidoCampos() : string {
