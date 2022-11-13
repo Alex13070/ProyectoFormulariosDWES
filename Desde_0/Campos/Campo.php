@@ -1,8 +1,8 @@
 <?php
 
-namespace Desde_0;
+namespace Desde_0\Campos;
 
-use Desde_0\TiposInput;
+use Desde_0\Utilidad\TiposInput;
 
 abstract class Campo{
 

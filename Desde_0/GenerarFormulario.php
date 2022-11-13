@@ -1,8 +1,9 @@
 <?php
 
 namespace Desde_0;
-use Desde_0\Campo;
-use Desde_0\HttpMethod;
+
+use Desde_0\Campos\Campo;
+use Desde_0\Utilidad\HttpMethod;
 
 class GenerarFormulario{
 
@@ -48,6 +49,9 @@ class GenerarFormulario{
 
         return "
         <div class='card'>
+            <div class = 'card-header text-right'>
+                <h1 class='f'>Crear evento</h1>
+            </div>
             <div class='card-body' id='formulario'>
                 <form action='". $this->action ."' method='". $this->method->value."' id='form'>
                 ".
@@ -56,7 +60,7 @@ class GenerarFormulario{
                     return $acu.$actual->crearCampo();
                 },"")."
                 <div class='d-grid gap-2 col-6 mx-auto'>
-                    <input type='submit' value='Enviar' class='btn btn-primary' name='enviar'>
+                    <input type='submit' value='Generar PDF' class='btn btn-primary' name='enviar'>
                 </div>
                 </form>
             </div>

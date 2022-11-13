@@ -1,8 +1,9 @@
 <?php
 
-namespace Desde_0;
-use Desde_0\Campo;
-use Desde_0\TiposInput;
+namespace Desde_0\Campos;
+use Desde_0\Utilidad\Placeholder;
+use Desde_0\Utilidad\TiposInput;
+
 
 
 class CampoTexto extends Campo{

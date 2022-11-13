@@ -1,8 +1,9 @@
 <?php
 
-namespace Desde_0;
-use Desde_0\CampoMultiple;
-use Desde_0\TiposInput;
+namespace Desde_0\Campos;
+
+use Desde_0\Utilidad\OpcionRadio;
+use Desde_0\Utilidad\TiposInput;
 
 class CampoRadio extends CampoMultiple{
 
@@ -15,15 +16,12 @@ class CampoRadio extends CampoMultiple{
     }
 
 
-
     public function contenidoCampos() : string {
-        return "<label class='form-label'>". $this->getLabel() ."</label>"       
+        return "<div class='mb-3'><label class='form-label'>". $this->getLabel() ."</label>"       
             . array_reduce($this->getOpciones(), function(string $acumulador, OpcionRadio $opcion) {
                 return $acumulador.$opcion->pintarOp();
-        }, "");
+        }, "")."</div>";
     } 
-
-
 
     public function getValue(){
         return $this->value;
@@ -36,8 +34,6 @@ class CampoRadio extends CampoMultiple{
         return $this;
     }
 
-    
-
-
 }
+
 ?>

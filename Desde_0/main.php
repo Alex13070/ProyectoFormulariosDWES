@@ -14,7 +14,7 @@
         </h1>
         <div class="item">
             <div class="card bg-dark text-blue slider">
-                <a href="FormularioCrearEvento.php">
+                <a href="../Desde_0/FormularioCrearEvento.php">
                     <div class="capa"></div>
                     <ul>
                         <li><img src="../img/cine3.jpg" class="card-img"></li>

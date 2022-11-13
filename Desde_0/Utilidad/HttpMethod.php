@@ -1,6 +1,6 @@
 <?php 
 
-namespace Desde_0;
+namespace Desde_0\Utilidad;
 
 enum HttpMethod : string {
     case GET = "get";

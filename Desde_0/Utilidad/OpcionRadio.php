@@ -1,6 +1,7 @@
 <?php
 
-namespace Desde_0;
+namespace Desde_0\Utilidad;
+use Desde_0\Utilidad\TiposInput;
 
 class OpcionRadio extends Opcion{
 

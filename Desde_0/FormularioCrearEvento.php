@@ -1,6 +1,15 @@
 <?php
 
 namespace Desde_0;
+use Desde_0\Campos\CampoEmail;
+use Desde_0\Campos\CampoFecha;
+use Desde_0\Campos\CampoNumber;
+use Desde_0\Campos\CampoRadio;
+use Desde_0\Campos\CampoTexto;
+use Desde_0\Utilidad\HttpMethod;
+use Desde_0\Utilidad\OpcionRadio;
+use Desde_0\Utilidad\TiposInput;
+
 
 
 spl_autoload_register(function ($class) {
@@ -42,7 +51,7 @@ $form->addCampo($opciones);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario to guapo</title>
-        <link rel='stylesheet' href='index.css' type='text/css'>
+        <link rel='stylesheet' href='../Desde_0/css/estilosWeb.css' type='text/css'>
         <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
     </head>
     <body>
