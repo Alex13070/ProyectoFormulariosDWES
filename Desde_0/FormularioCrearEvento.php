@@ -21,13 +21,13 @@ spl_autoload_register(function ($class) {
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
 
-$nombre = new CampoTexto("Nombre","nb",TiposInput::TEXT,"nombre","Introduzca su nombre");
-$email = new CampoEmail("Email","email",TiposInput::EMAIL,"email","info@gmail.com");
-$nombreGrupo = new CampoTexto("Nombre del grupo","nb_grupo",TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo");
-$precioEntrada = new CampoNumber("Precio entrada","precio",TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150);
-$fecha = new CampoFecha("Fecha del evento","fecha",TiposInput::DATE,"fecha");
-$aforo = new CampoNumber("Aforo","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500);
-$opciones = new CampoRadio("Sexo","s",TiposInput::RADIO_BUTTON,"s","F");
+$nombre = new CampoTexto("Nombre:","nb",TiposInput::TEXT,"nombre","Introduzca su nombre");
+$email = new CampoEmail("Email:","email",TiposInput::EMAIL,"email","info@gmail.com");
+$nombreGrupo = new CampoTexto("Nombre del grupo:","nb_grupo",TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo");
+$precioEntrada = new CampoNumber("Precio entrada:","precio",TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150);
+$fecha = new CampoFecha("Fecha del evento:","fecha",TiposInput::DATE,"fecha");
+$aforo = new CampoNumber("Aforo:","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500);
+$opciones = new CampoRadio("Sexo:","s",TiposInput::RADIO_BUTTON,"s","F");
 
 $opciones->addOpcion(new OpcionRadio("Hombre","hombre","h","sexo"));
 $opciones->addOpcion(new OpcionRadio("Mujer","mujer","m","sexo"));
