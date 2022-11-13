@@ -9,7 +9,7 @@ class CampoTexto extends Campo{
 
     use Placeholder;
 
-    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $placeholder = "", string $id = "") {
+    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $id = "",string $placeholder = "") {
         parent::__construct($label, $name, $type, $id);
         $this->placeholder = $placeholder;    
     }

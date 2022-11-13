@@ -9,8 +9,8 @@ class CampoEmail extends CampoTexto{
 
     use Placeholder;
 
-    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::EMAIL, string $placeholder = "", string $id = "") {
-        parent::__construct($label, $name, $type, $id);
+    public function __construct(string $label = "", string $name = "", string $id = "", string $placeholder = "") {
+        parent::__construct($label, $name, TiposInput::EMAIL, $id,$placeholder);
         $this->placeholder = $placeholder;    
     }
 

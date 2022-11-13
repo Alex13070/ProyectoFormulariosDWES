@@ -8,12 +8,19 @@ spl_autoload_register(function ($class) {
     require("$classPath${file}.php");
 });
 
-
-$campoTexto = new CampoTexto("Nombre","nb",TiposInput::TEXT,"Introduzca su nombre","nb");
-
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
-$form->addCampo($campoTexto);
+$nombre = new CampoTexto("Nombre","nb",TiposInput::TEXT,"Introduzca su nombre","nb1");
+$aforo = new CampoNumber("Aforo","nb","nb","Introduzca el aforo",0,500);
+
+/*$form->addCampo($aforo);
+
+$form->addCampo($nombre);*/
+
+$email = new CampoEmail("Email","email","email","info@gmail.com");
+
+$form->addCampo($email);
+
 
 
 ?>
@@ -30,8 +37,6 @@ $form->addCampo($campoTexto);
     <body>
         <?= 
             $form->crearPagina();
-
-            $form->pintarForm();
         ?>
     </body>
 </html>
