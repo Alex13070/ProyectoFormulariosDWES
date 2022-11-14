@@ -8,7 +8,6 @@ enum Genero : string{
     case OTRO = "Otro";
     case NONE = "none";
 
-
 }
 
 ?>
