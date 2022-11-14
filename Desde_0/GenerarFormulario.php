@@ -50,7 +50,7 @@ class GenerarFormulario{
         return "
         <div class='card'>
             <div class = 'card-header text-right'>
-                <h1 class='f'>Crear evento</h1>
+                <h1 class='cabecera-form'>Crear evento</h1>
             </div>
             <div class='card-body' id='formulario'>
                 <form action='". $this->action ."' method='". $this->method->value."' id='form'>

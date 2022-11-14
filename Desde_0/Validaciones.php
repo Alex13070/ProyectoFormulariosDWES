@@ -1,10 +1,13 @@
 <?php
 
+namespace Desde_0;
+use Desde_0\Utilidad\HttpMethod;
+use Exception;
 use ExpReg;
-use Fecha;
-use Genero;
+use Desde_0\Utilidad\Genero;
+use Desde_0\Utilidad\Fecha;
 
-class validaciones2{
+class validaciones{
 
     private array $peticion;
 

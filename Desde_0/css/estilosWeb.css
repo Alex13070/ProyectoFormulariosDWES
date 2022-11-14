@@ -16,7 +16,7 @@ a:link,a:visited,a:hover,a:active,a::after{
 }
 
 
-h2,p,h1{
+h2,p,h1:not(.cabecera-form){
     -webkit-text-fill-color: white;
     text-shadow: 2px 2px 10px white;
 }

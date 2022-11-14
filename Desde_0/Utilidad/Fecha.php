@@ -4,7 +4,7 @@ namespace Desde_0\Utilidad;
 
 use Exception;
 
-class campoFecha {
+class Fecha {
 
     private int $day;
     private int $month;
@@ -75,7 +75,7 @@ class campoFecha {
      * @return bool true si esta fecha es posterior a la actual
      */
     public function despuesDeHoy(): bool {
-        return $this->posteriorA (new campoFecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->posteriorA (new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
     }
 
     /**
@@ -83,7 +83,7 @@ class campoFecha {
      * @return bool true si esta fecha es anterior a la actual
      */
     public function antesDeHoy(): bool {
-        return $this->anteriorA(new campoFecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->anteriorA(new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
     }
     
     /**
@@ -91,15 +91,15 @@ class campoFecha {
      * @return bool true si esta fecha es igual a la actual
      */
     public function esHoy(): bool {
-        return $this->igualA(new campoFecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->igualA(new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
     }
 
     /**
      * Comprueba si esta fecha es posterior a la introducida
-     * @param campoFecha fecha con la que comparar
+     * @param Fecha fecha con la que comparar
      * @return bool true si es posterior false si no
      */
-    public function posteriorA(campoFecha $fecha) : bool {
+    public function posteriorA(Fecha $fecha) : bool {
         return $this->year > $fecha->year || 
             $this->year == $fecha->year && $this->month > $fecha->month || 
             $this->year == $fecha->year && $this->month == $fecha->month && $this->day > $fecha->day
@@ -108,19 +108,19 @@ class campoFecha {
 
     /**
      * Comprueba si esta fecha es igual a la introducida
-     * @param campoFecha fecha con la que comparar
+     * @param Fecha fecha con la que comparar
      * @return bool true si es igual false si no
      */
-    public function igualA(campoFecha $fecha) : bool {
+    public function igualA(Fecha $fecha) : bool {
         return $this->year == $fecha->year && $this->month == $fecha->month && $this->day == $fecha->day;
     }
 
     /**
      * Comprueba si esta fecha es anterior a la introducida
-     * @param campoFecha fecha con la que comparar
+     * @param Fecha fecha con la que comparar
      * @return bool true si es anterior false si no
      */
-    public function anteriorA(campoFecha $fecha) : bool {
+    public function anteriorA(Fecha $fecha) : bool {
         return $this->year < $fecha->year || 
             $this->year == $fecha->year && $this->month < $fecha->month || 
             $this->year == $fecha->year && $this->month == $fecha->month && $this->day < $fecha->day
@@ -135,18 +135,18 @@ class campoFecha {
      * Parsea una fecha desde un string 
      * @param string $fecha Linea con un string con fecha formato YYYY-MM-DD
      */
-    public static function fromYYYYMMDD(string $fecha) : campoFecha {
+    public static function fromYYYYMMDD(string $fecha) : Fecha {
         $date = explode("-", $fecha);
-        return new campoFecha (intval($date[2]), intval($date[1]), intval($date[0]));
+        return new Fecha (intval($date[2]), intval($date[1]), intval($date[0]));
     }
 
     /**
      * Parsea una fecha desde un string 
      * @param string $fecha Linea con un string con fecha formato DD-MM-YYYY
      */
-    public static function fromDDMMYYYY(string $fecha) : campoFecha {
+    public static function fromDDMMYYYY(string $fecha) : Fecha {
         $date = explode("-", $fecha);
-        return new campoFecha (intval($date[0]), intval($date[1]), intval($date[2]));
+        return new Fecha (intval($date[0]), intval($date[1]), intval($date[2]));
     }
     
 }
