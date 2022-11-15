@@ -28,7 +28,7 @@ class Evento{
 
     public static function fromForm(array $peticion) : Evento {
 
-        return new Evento($peticion[self::NOMBRE] . ";",$peticion[self::EMAIL],$peticion[self::NOMBRE_GRUPO],$peticion[self::PRECIO_ENTRADA],$peticion[self::FECHA],$peticion[self::AFORO],$peticion[self::OPCIONES] . "\n");
+        return new Evento($peticion[self::NOMBRE],$peticion[self::EMAIL],$peticion[self::NOMBRE_GRUPO],$peticion[self::PRECIO_ENTRADA],$peticion[self::FECHA],$peticion[self::AFORO],$peticion[self::OPCIONES]);
 
     }
 

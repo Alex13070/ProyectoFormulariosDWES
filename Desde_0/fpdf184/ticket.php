@@ -1,4 +1,7 @@
 <?php
+
+namespace Desde_0\fpdf184;
+use PDF_Code128;
 require "PDF_Code128.php";
 
 $pdf = new PDF_Code128('P','mm',array(80,258));

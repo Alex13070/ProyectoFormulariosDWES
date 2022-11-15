@@ -61,11 +61,15 @@ if(isset($_POST['Enviar'])){
         );
     
             //Redireccionar
-            header("Location: ticket.php");
+            header("Location: Desde_0\fpdf184\ticket.php");
     
             //salir
         exit();
+    }else{
+        echo "No se ha podido validar la informacion de algun campo.";
     }
+}else{
+    echo "Esto va como el ogt.";
 }
 
 
