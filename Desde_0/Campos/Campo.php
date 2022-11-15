@@ -2,6 +2,7 @@
 
 namespace Desde_0\Campos;
 
+use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\TiposInput;
 
 abstract class Campo{
@@ -63,6 +64,8 @@ abstract class Campo{
     }
 
     public abstract function contenidoCampos() : string;
+
+    public abstract function validarCampos(HttpMethod $method) : bool;
 
 }
 

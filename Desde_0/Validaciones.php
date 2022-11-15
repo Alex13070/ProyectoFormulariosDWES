@@ -7,12 +7,14 @@ use ExpReg;
 use Desde_0\Utilidad\Genero;
 use Desde_0\Utilidad\Fecha;
 
-class validaciones{
+class Validaciones{
 
     private array $peticion;
 
+    private static Validaciones $singletone;
+
     //constructor que define peticion como GET o POST en base al HttpMethod
-    public function __construct(HttpMethod $metodo){
+    private function __construct(HttpMethod $metodo){
         switch($metodo) {
             case HttpMethod::GET:
                 $this->peticion = $_GET;
@@ -20,12 +22,14 @@ class validaciones{
             case HttpMethod::POST:
                 $this->peticion = $_POST;
                 break;
-            default:
-            throw new Exception("Metodo no soportado");
+                default:
+                throw new Exception("Metodo no soportado");
+            }
         }
+    public static function getSingletone($method) : Validaciones {
+        return is_null(Validaciones::$singletone) ? new Validaciones($method) : Validaciones::$singletone;
     }
-
-    //validaciones generales
+        //validaciones generales
     private function validarGeneral(ExpReg $regex, string $campo) : bool{
         return isset($this->peticion[$campo]) && preg_match($regex->value, $this->peticion[$campo]);
     }
@@ -34,6 +38,9 @@ class validaciones{
         return isset($this->peticion[$campo]);
     }
 
+    public function validarEmail(string $campoEmail) : bool{
+        return $this->validarGeneral(ExpReg::CORREO, $campoEmail);
+    }
     private function validarGenero(Genero $genero, string $campo) : bool{
         return isset($this->peticion[$campo]) && preg_match($genero->value, $this->peticion[$campo]);
     }
@@ -51,9 +58,7 @@ class validaciones{
         return $this->validarGeneral(ExpReg::NUMERO, $campoNumero);
     }
 
-    public function validarEmail(string $campoEmail) : bool{
-        return $this->validarGeneral(ExpReg::CORREO, $campoEmail);
-    }
+
 
     public function validarFecha(string $campoFecha) : bool{
         return  (Fecha::fromDDMMYYYY($this->peticion[$campoFecha]))->despuesDeHoy();  
@@ -76,16 +81,19 @@ class validaciones{
                 }
             }else $errores["genero[]"] = "No ha introducido ningun genero";
         }
-    */
+        $this->validarSubmit($this->peticion["Enviar"]);
+        $this->validarNombre($this->peticion["Nombre"]);
+        $this->validarNumero($this->peticion["Numero"]);
+        $this->validarEmail($this->peticion["Email"]);
+        $this->validarFecha($this->peticion["Fecha"]);
+        */
+
+
+    /**
+     * Get the value of singletone
+     */ 
+
 
 }
-
-    $this->validarSubmit($this->peticion["Enviar"]);
-    $this->validarNombre($this->peticion["Nombre"]);
-    $this->validarNumero($this->peticion["Numero"]);
-    $this->validarEmail($this->peticion["Email"]);
-    $this->validarFecha($this->peticion["Fecha"]);
-    
-
 
 ?>

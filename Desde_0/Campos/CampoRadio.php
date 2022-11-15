@@ -2,8 +2,10 @@
 
 namespace Desde_0\Campos;
 
+use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\OpcionRadio;
 use Desde_0\Utilidad\TiposInput;
+use Desde_0\Validaciones;
 
 class CampoRadio extends CampoMultiple{
 
@@ -34,6 +36,12 @@ class CampoRadio extends CampoMultiple{
         return $this;
     }
 
+
+	public function validarCampos(HttpMethod $method): bool {
+
+        return Validaciones::getSingletone($method)->validarRadio($this->getName());
+
+	}
 }
 
 ?>

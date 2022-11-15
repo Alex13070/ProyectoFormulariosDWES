@@ -2,7 +2,9 @@
 
 
 namespace Desde_0\Campos;
+use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\TiposInput;
+use Desde_0\Validaciones;
 
 
 
@@ -25,6 +27,12 @@ class CampoNumber extends CampoTexto{
             <input class='form-control' id='" . $this->getId() . "' type='" . $this->getType()->value . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."' min='" . $this->minimo . "' max='" . $this->maximo . "'>
         ";
     }
+
+    public function validarCampos(HttpMethod $method): bool {
+
+        return Validaciones::getSingletone($method)->validarNumero($this->getName());
+     
+     }
 }
 
 ?>

@@ -2,9 +2,9 @@
 
 
 namespace Desde_0\Campos;
+use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\TiposInput;
-
-
+use Desde_0\Validaciones;
 
 class CampoEmail extends CampoTexto{
 
@@ -21,6 +21,11 @@ class CampoEmail extends CampoTexto{
         ";
     }
 
+	public function validarCampos(HttpMethod $method): bool {
+
+       return Validaciones::getSingletone($method)->validarEmail($this->getName());
+    
+	}
 }
 
 

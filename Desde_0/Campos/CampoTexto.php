@@ -1,8 +1,10 @@
 <?php
 
 namespace Desde_0\Campos;
+use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\Placeholder;
 use Desde_0\Utilidad\TiposInput;
+use Desde_0\Validaciones;
 
 
 
@@ -31,6 +33,15 @@ class CampoTexto extends Campo{
         ";
     }
 
+	/**
+	 * @param \Desde_0\Utilidad\HttpMethod $method
+	 * @return bool
+	 */
+	public function validarCampos(HttpMethod $method): bool {
+
+        return Validaciones::getSingletone($method)->validarNombre($this->getName());
+
+	}
 }
 
 ?>
