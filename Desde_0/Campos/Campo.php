@@ -12,11 +12,14 @@ abstract class Campo{
     private TiposInput $type;
     private string $id;
 
-    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $id = "") {
+    private string $error;
+
+    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $id = "",string $error = "") {
         $this->label = $label;
         $this->name = $name;
         $this->type = $type;
         $this->id = $id;
+        $this->error = $error;
     }
 
     public function getId() : string{
@@ -54,7 +57,17 @@ abstract class Campo{
 
         return $this;
     }
+    public function getError(){
+        return $this->error;
+    }
 
+
+    public function setError($error){
+        $this->error = $error;
+
+        return $this;
+    }
+    
     public function crearCampo() : string {
         return "
         <div class='mb-3'>
@@ -67,6 +80,8 @@ abstract class Campo{
 
     public abstract function validarCampos(HttpMethod $method) : bool;
 
+
+ 
 }
 
 ?>

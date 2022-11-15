@@ -21,12 +21,12 @@ spl_autoload_register(function ($class) {
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
 
-$nombre = new CampoTexto("Nombre:","nb",TiposInput::TEXT,"nombre","Introduzca su nombre");
-$email = new CampoEmail("Email:","email",TiposInput::EMAIL,"email","info@gmail.com");
-$nombreGrupo = new CampoTexto("Nombre del grupo:","nb_grupo",TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo");
-$precioEntrada = new CampoNumber("Precio entrada:","precio",TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150);
-$fecha = new CampoFecha("Fecha del evento:","fecha",TiposInput::DATE,"fecha");
-$aforo = new CampoNumber("Aforo:","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500);
+$nombre = new CampoTexto("Nombre:","nb",TiposInput::TEXT,"nombre","Introduzca su nombre","El formato introducido es incorrecto");
+$email = new CampoEmail("Email:","email",TiposInput::EMAIL,"email","info@gmail.com"," El formato de correo introducido es incorrecto");
+$nombreGrupo = new CampoTexto("Nombre del grupo:","nb_grupo",TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo"," Nombre del grupo incorrecto");
+$precioEntrada = new CampoNumber("Precio entrada:","precio",TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio introducido es incorrecto");
+$fecha = new CampoFecha("Fecha del evento:","fecha",TiposInput::DATE,"fecha","Fecha incorrecta.");
+$aforo = new CampoNumber("Aforo:","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500,"El aforo introducido es incorrecto");
 $opciones = new CampoRadio("Sexo:","s",TiposInput::RADIO_BUTTON,"s","F");
 
 $opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre","sexo"));
@@ -59,5 +59,52 @@ $form->addCampo($opciones);
         <?= 
             $form->crearPagina();
         ?>
+        <script>
+            document.querySelectorAll("form").forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            });
+
+
+            // Validar los checkbox
+            const checkboxes = document.getElementById("formulario").querySelectorAll('input[type=checkbox]');
+
+            function atLeastOneCheckboxIsChecked() {
+                const checkboxes = Array.from(document.querySelectorAll(".checkbox"));
+                return checkboxes.reduce((acc, curr) => acc || curr.checked, false);
+            }
+
+            function init() {
+                
+                for (let i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].addEventListener('change', checkValidity);
+                    checkValidity();
+                }
+            }
+
+            function isChecked() {
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) return true;
+                }
+
+                return false;
+            }
+
+            function checkValidity() {
+                const errorMessage = !isChecked() ? 'Tiene que haber al menos un checkbox seleccionado.' : '';
+                checkboxes.forEach((chk) => {
+                    chk.setCustomValidity(errorMessage)
+                });
+            }
+
+            if (checkboxes.length > 0) {
+                init();
+            }
+        </script>
     </body>
 </html>

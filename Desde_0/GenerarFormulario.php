@@ -53,7 +53,7 @@ class GenerarFormulario{
                 <h1 class='cabecera-form'>Crear evento</h1>
             </div>
             <div class='card-body' id='formulario'>
-                <form action='". $this->action ."' method='". $this->method->value."' id='form'>
+                <form action='". $this->action ."' method='". $this->method->value."' id='form' class='needs-validation' novalidate>
                 ".
                 array_reduce($this->campos, function(string $acu,Campo $actual) : string {
 

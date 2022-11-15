@@ -10,8 +10,8 @@ class CampoFecha extends Campo{
 
 
 
-    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::DATE, string $id = "") {
-        parent::__construct($label, $name, $type, $id);
+    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::DATE, string $id = "",string $error = " ") {
+        parent::__construct($label, $name, $type, $id,$error);
     }
 
 
@@ -19,7 +19,10 @@ class CampoFecha extends Campo{
     public function contenidoCampos() : string {
         return "
             <label class='form-label'>". $this->getLabel() ."</label>
-            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() .">
+            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."required>
+            <div class='invalid-feedback'>
+                ".$this->error."
+            </div>          
         ";
     }
 

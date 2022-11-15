@@ -12,8 +12,8 @@ class CampoTexto extends Campo{
 
     use Placeholder;
 
-    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $id = "",string $placeholder = "") {
-        parent::__construct($label, $name, $type, $id);
+    public function __construct(string $label = "", string $name = "", TiposInput $type = TiposInput::TEXT, string $id = "",string $placeholder = "",string $error = " ") {
+        parent::__construct($label, $name, $type, $id, $error);
         $this->placeholder = $placeholder;    
     }
 
@@ -29,7 +29,10 @@ class CampoTexto extends Campo{
     public function contenidoCampos() : string {
         return "
             <label class='form-label'>". $this->getLabel() ."</label>
-            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."'>
+            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."'required>
+            <div class='invalid-feedback'>
+                ".$this->error."
+            </div>
         ";
     }
 
