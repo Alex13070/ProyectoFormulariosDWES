@@ -6,6 +6,8 @@ use Desde_0\Campos\CampoFecha;
 use Desde_0\Campos\CampoNumber;
 use Desde_0\Campos\CampoRadio;
 use Desde_0\Campos\CampoTexto;
+use Desde_0\Utilidad\EscribirFichero;
+use Desde_0\Utilidad\Evento;
 use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\OpcionRadio;
 use Desde_0\Utilidad\TiposInput;
@@ -21,17 +23,17 @@ spl_autoload_register(function ($class) {
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
 
-$nombre = new CampoTexto("Nombre:","nb",TiposInput::TEXT,"nombre","Introduzca su nombre","El formato introducido es incorrecto");
-$email = new CampoEmail("Email:","email",TiposInput::EMAIL,"email","info@gmail.com"," El formato de correo introducido es incorrecto");
-$nombreGrupo = new CampoTexto("Nombre del grupo:","nb_grupo",TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo"," Nombre del grupo incorrecto");
-$precioEntrada = new CampoNumber("Precio entrada:","precio",TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio introducido es incorrecto");
-$fecha = new CampoFecha("Fecha del evento:","fecha",TiposInput::DATE,"fecha","Fecha incorrecta.");
-$aforo = new CampoNumber("Aforo:","aforo",TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500,"El aforo introducido es incorrecto");
-$opciones = new CampoRadio("Sexo:","s",TiposInput::RADIO_BUTTON,"s","F");
+$nombre = new CampoTexto("Nombre:",Evento::NOMBRE,TiposInput::TEXT,"nombre","Introduzca su nombre","El formato introducido es incorrecto");
+$email = new CampoEmail("Email:",Evento::EMAIL,TiposInput::EMAIL,"email","info@gmail.com"," El formato de correo introducido es incorrecto");
+$nombreGrupo = new CampoTexto("Nombre del grupo:",Evento::NOMBRE_GRUPO,TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo"," Nombre del grupo incorrecto");
+$precioEntrada = new CampoNumber("Precio entrada:",Evento::PRECIO_ENTRADA,TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio introducido es incorrecto");
+$fecha = new CampoFecha("Fecha del evento:",Evento::FECHA,TiposInput::DATE,"fecha","Fecha incorrecta.");
+$aforo = new CampoNumber("Aforo:",Evento::AFORO,TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500,"El aforo introducido es incorrecto");
+$opciones = new CampoRadio("Sexo:",Evento::OPCIONES,TiposInput::RADIO_BUTTON,"s","F");
 
-$opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre","sexo"));
-$opciones->addOpcion(new OpcionRadio("Mujer","Mujer","Mujer","sexo"));
-$opciones->addOpcion(new OpcionRadio("Otro","Otros","Otro","sexo"));
+$opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre",Evento::OPCIONES));
+$opciones->addOpcion(new OpcionRadio("Mujer","Mujer","Mujer",Evento::OPCIONES));
+$opciones->addOpcion(new OpcionRadio("Otro","Otros","Otro",Evento::OPCIONES));
 
 $form->addCampo($nombre);
 $form->addCampo($email);
@@ -42,6 +44,29 @@ $form->addCampo($fecha);
 $form->addCampo($opciones);
 
 
+
+
+if(isset($_POST['Enviar'])){
+    if($form->validarForm()){
+        $evento = Evento::fromForm($_POST);
+        
+        $contenido = new EscribirFichero(HttpMethod::POST);
+
+        $cadena = $contenido->rellenarFichero();
+
+        file_put_contents(
+            "Eventos.csv",
+            $cadena,
+            FILE_APPEND
+        );
+    
+            //Redireccionar
+            header("Location: ticket.php");
+    
+            //salir
+        exit();
+    }
+}
 
 
 ?>

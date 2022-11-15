@@ -6,8 +6,6 @@ use Exception;
 class EscribirFichero{
 
     private array $array = [];
-    private bool $salir = false;
-    private string $cadena = "";
     
     private static EscribirFichero $singletone;
     
@@ -25,19 +23,21 @@ class EscribirFichero{
         }
     }
 
-    public function relllenarFichero(){
+    public function rellenarFichero(){
 
-        for($i = 0;$i < count($this->array) && !$this->salir;$i++){
+        $cadena = "";
+
+        for($i = 0;$i < count($this->array);$i++){
     
-            if(!empty($array[$i])){
-                if($i == $this->array[count($this->array) -1]){
-                    $this->cadena += $this->array[$i] . "\n";
-                }else{
-                    $this->cadena += $this->array[$i] . ";";
-                }
-            }else $this->salir = true;
         
+                if($i == $this->array[count($this->array) -1]){
+                    $cadena += $this->array[$i] . "\n";
+                }else{
+                    $cadena += $this->array[$i] . ";";
+                }
         }
+
+        return $cadena;
 
     }
 
@@ -45,16 +45,6 @@ class EscribirFichero{
         return is_null(EscribirFichero::$singletone) ? new EscribirFichero($method) : EscribirFichero::$singletone;
     }
 
-
-    public function getSalir(){
-        return $this->salir;
-    }
-
-    public function setSalir($salir){
-        $this->salir = $salir;
-
-        return $this;
-    }
 
     public function getArray(){
         return $this->array;
@@ -66,10 +56,10 @@ class EscribirFichero{
         return $this;
     }
 
-    public function getCadena(){
-        return $this->cadena;
-    }
-
 }
+
+$fichero = new EscribirFichero(HttpMethod::POST);
+
+$fichero->getSingletone(HttpMethod::POST);
 
 ?>

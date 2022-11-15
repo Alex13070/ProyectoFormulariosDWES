@@ -33,10 +33,6 @@ class Validaciones{
     private function validarGeneral(ExpReg $regex, string $campo) : bool{
         return isset($this->peticion[$campo]) && preg_match($regex->value, $this->peticion[$campo]);
     }
-   
-    private function validar2(string $campo) : bool{
-        return isset($this->peticion[$campo]);
-    }
 
     public function validarEmail(string $campoEmail) : bool{
         return $this->validarGeneral(ExpReg::CORREO, $campoEmail);
@@ -46,9 +42,7 @@ class Validaciones{
     }
 
     //validaciones especificas
-    public function validarSubmit($campoSubmit) : bool{
-        return $this->validar2($campoSubmit);
-    }
+
 
     public function validarNombre(string $campoNombre) : bool{
         return $this->validarGeneral(ExpReg::NOMBRE, $campoNombre);

@@ -16,6 +16,20 @@ class GenerarFormulario{
         
         $this->campos[] = $campo; 
     }
+
+    public function validarForm(){
+
+        $valido = true;
+
+        for($i = 0;$i < count($this->campos) && $valido;$i++){
+            
+            if(!$this->campos[$i]->validarCampos(HttpMethod::POST)){
+                $valido = false;
+            }
+        }
+
+        return $valido;
+    }
     
     
     public function __construct(string $action = "",HttpMethod $method = HttpMethod::GET){
@@ -79,6 +93,13 @@ class GenerarFormulario{
                 <div class='col-md-3'></div>
             </div>
         </div>";
+    }
+
+
+    public function getCampos(){
+        
+        return $this->campos;
+ 
     }
 }
 
