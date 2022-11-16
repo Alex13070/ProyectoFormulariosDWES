@@ -50,9 +50,9 @@ function pintarPDF(Evento $evento) {
 
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("Datos del Evento")),0,'C',false);
     $pdf->SetFont('Arial','',9);
-    $pdf->MultiCell(0,5,utf8_decode("Nombre grupo".Evento::NOMBRE_GRUPO),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Nombre grupo ".$evento->getNombreGrupo()),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Dirección del sitio...."),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Aforo: ".Evento::AFORO),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Aforo: ".$evento->getAforo()),0,'C',false);
 
 
 
@@ -64,10 +64,10 @@ function pintarPDF(Evento $evento) {
     $pdf->SetTextColor(0,0,0);
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("Datos del Comprador")),0,'C',false);
     $pdf->SetFont('Arial','',9);
-    $pdf->MultiCell(0,5,utf8_decode("Cliente: ".Evento::NOMBRE),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Cliente: ".$evento->getNombre()),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Documento: DNI 00000000"),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Fecha: ".Evento::FECHA),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Email: ".Evento::EMAIL),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Fecha: ".$evento->getFecha()),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Email: ".$evento->getEmail()),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Teléfono: 00000000"),0,'C',false);
     $pdf->SetFont('Arial','B',10);
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("ENTRADA Nº: 1")),1,'C',false);
@@ -105,9 +105,9 @@ function pintarPDF(Evento $evento) {
     /*----------  Detalles de la tabla  ----------*/
     $pdf->MultiCell(0,4,utf8_decode("Entrada a Evento"),0,'C',false);
     $pdf->Cell(10,4,utf8_decode("1"),0,0,'C');
-    $pdf->Cell(19,4,utf8_decode(Evento::PRECIO_ENTRADA),0,0,'C');
+    $pdf->Cell(19,4,utf8_decode($evento->getPrecioEntrada()),0,0,'C');
     $pdf->Cell(19,4,utf8_decode("0"),0,0,'C');
-    $pdf->Cell(28,4,utf8_decode(Evento::PRECIO_ENTRADA),0,0,'C');
+    $pdf->Cell(28,4,utf8_decode($evento->getPrecioEntrada()),0,0,'C');
     $pdf->Ln(5);
     $pdf->MultiCell(0,4,utf8_decode("Apertura de puertas a las 19:30"),0,'C',false);
     $pdf->Ln(7);
@@ -122,7 +122,7 @@ function pintarPDF(Evento $evento) {
     # Impuestos & totales #
     $pdf->Cell(18,5,utf8_decode(""),0,0,'C');
     $pdf->Cell(22,5,utf8_decode("SUBTOTAL"),0,0,'C');
-    $pdf->Cell(32,5,utf8_decode(Evento::PRECIO_ENTRADA),0,0,'C');
+    $pdf->Cell(32,5,utf8_decode($evento->getPrecioEntrada()),0,0,'C');
 
     $pdf->Ln(5);
 
@@ -132,13 +132,13 @@ function pintarPDF(Evento $evento) {
 
     $pdf->Cell(18,5,utf8_decode(""),0,0,'C');
     $pdf->Cell(22,5,utf8_decode("TOTAL A PAGAR"),0,0,'C');
-    $pdf->Cell(32,5,utf8_decode(Evento::PRECIO_ENTRADA),0,0,'C');
+    $pdf->Cell(32,5,utf8_decode($evento->getPrecioEntrada()),0,0,'C');
 
     $pdf->Ln(5);
 
     $pdf->Cell(18,5,utf8_decode(""),0,0,'C');
     $pdf->Cell(22,5,utf8_decode("TOTAL PAGADO"),0,0,'C');
-    $pdf->Cell(32,5,utf8_decode(Evento::PRECIO_ENTRADA),0,0,'C');
+    $pdf->Cell(32,5,utf8_decode($evento->getPrecioEntrada()),0,0,'C');
 
     $pdf->Ln(5);
 

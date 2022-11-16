@@ -17,13 +17,13 @@ class Evento{
     /**
      * Publicas por falta de tiempo, la vida es dura
      */
-    public string $nombre;
-    public string $email;
-    public string $nombreGrupo;
-    public string $precioEntrada;
-    public string $fecha;
-    public string $aforo;
-    public string $opciones;
+    private string $nombre;
+    private string $email;
+    private string $nombreGrupo;
+    private string $precioEntrada;
+    private string $fecha;
+    private string $aforo;
+    private string $opciones;
 
     private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones) {
         $this->nombre = $nombre;
@@ -73,6 +73,33 @@ class Evento{
         return $evento;
     }
 
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function getEmail(){
+        return $this->email;
+    }
+
+    public function getPrecioEntrada(){
+        return $this->precioEntrada;
+    }
+
+    public function getNombreGrupo(){
+        return $this->nombreGrupo;
+    }
+
+    public function getFecha(){
+        return $this->fecha;
+    }
+
+    public function getAforo(){
+        return $this->aforo;
+    }
+
+    public function getOpciones(){
+        return $this->opciones;
+    }
 }
 
 ?>
