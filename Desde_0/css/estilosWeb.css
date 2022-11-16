@@ -117,3 +117,7 @@ img {
 .contenido{
     z-index: 3;
 }
+
+pre {
+    color: white;
+}

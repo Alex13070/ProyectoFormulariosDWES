@@ -19,7 +19,8 @@ class CampoRadio extends CampoMultiple{
 
 
     public function contenidoCampos() : string {
-        return "<div class='mb-3'><label class='form-label'>". $this->getLabel() ."</label>"       
+        return "<div class='mb-3'> 
+            <label class='form-label'>". $this->getLabel() ."</label>"       
             . array_reduce($this->getOpciones(), function(string $acumulador, OpcionRadio $opcion) {
                 return $acumulador.$opcion->pintarOp();
         }, "")."</div>";

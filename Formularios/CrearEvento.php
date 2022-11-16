@@ -72,7 +72,7 @@ $estilos = EstiloMusical::cases();
                                     <label class="form-label">Evento</label>
                                     <select class="form-select" aria-label="Default select example" name="evento" id="evento">
                                         <!-- <option disabled value="" selected hidden> Seleccione el tipo de evento que quiere registrar </option> -->
-                                        <option value="cine" selected>Cine</option>
+                                        <option value="cine">Cine</option>
                                         <option value="concierto">Concierto</option>
                                     </select>
                                 </div>

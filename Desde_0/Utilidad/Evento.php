@@ -2,11 +2,6 @@
 
 namespace Desde_0\Utilidad;
 
-use Desde_0\Campos\CampoEmail;
-use Desde_0\Campos\CampoFecha;
-use Desde_0\Campos\CampoNumber;
-use Desde_0\Campos\CampoRadio;
-use Desde_0\Campos\CampoTexto;
 use Desde_0\GenerarFormulario;
 
 class Evento{
@@ -19,23 +14,63 @@ class Evento{
     public const AFORO = 'aforo';
     public const OPCIONES = 'name';
 
-
+    /**
+     * Publicas por falta de tiempo, la vida es dura
+     */
+    public string $nombre;
+    public string $email;
+    public string $nombreGrupo;
+    public string $precioEntrada;
+    public string $fecha;
+    public string $aforo;
+    public string $opciones;
 
     private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones) {
+        $this->nombre = $nombre;
+        $this->email = $email;
+        $this->nombreGrupo = $nombreGrupo;
+        $this->precioEntrada = $precioEntrada;
+        $this->fecha = $fecha;
+        $this->aforo = $aforo;
+        $this->opciones = $opciones;
+    }
 
+    public static function fromForm(GenerarFormulario $form, array $peticion) : Evento|null {
+        $evento = null;
+        if ($form->validarForm()) {
+            try {
+                $evento = new Evento (
+                    $peticion[self::NOMBRE],
+                    $peticion[self::EMAIL],
+                    $peticion[self::NOMBRE_GRUPO],
+                    $peticion[self::PRECIO_ENTRADA],
+                    $peticion[self::FECHA],
+                    $peticion[self::AFORO],
+                    $peticion[self::OPCIONES]
+                );
+            } catch (\Exception $e) {
+                $evento = null;
+            }
+
+        }
+        return $evento;
+
+    }
+
+    public function toCSV(){
+        return $this->nombre .";" . $this->email . ";"  .  $this->nombreGrupo . ";" . $this->precioEntrada . ";" . $this->fecha . ";" . $this->aforo . ";" . $this->opciones;
+    }
+
+    public static function fromCSV(string $linea) : Evento|null {
+        $array = explode(";", $linea);
+
+        try {
+            $evento = new Evento ($array[0], $array[1], $array[2], $array[3], $array[4], $array[5], $array[6]);
+        } catch (\Throwable $th) {
+            $evento = null;
+        }
         
-    }
-
-    public static function fromForm(array $peticion) : Evento {
-
-        return new Evento($peticion[self::NOMBRE],$peticion[self::EMAIL],$peticion[self::NOMBRE_GRUPO],$peticion[self::PRECIO_ENTRADA],$peticion[self::FECHA],$peticion[self::AFORO],$peticion[self::OPCIONES]);
-
-    }
-
-    public static function toCSV(){
-
-        return $_POST[self::NOMBRE].";".$_POST[self::EMAIL].";".$_POST[self::NOMBRE_GRUPO].";".$_POST[self::PRECIO_ENTRADA].";".$_POST[self::FECHA].";".$_POST[self::AFORO].";".$_POST[self::OPCIONES];
-
+        return $evento;
     }
 
 }

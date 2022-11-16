@@ -6,7 +6,6 @@ use Exception;
 use Desde_0\Utilidad\ExpReg;
 use Desde_0\Utilidad\Genero;
 use Desde_0\Utilidad\Fecha;
-use Utilidad\Regex;
 
 class Validaciones{
 
@@ -33,15 +32,11 @@ class Validaciones{
     }
         //validaciones generales
     private function validarGeneral(ExpReg $regex, string $campo) : bool{
-        echo "<h1>".$regex->value."</h1>";
         return isset($this->peticion[$campo]) && preg_match($regex->value, $this->peticion[$campo]);
     }
 
     public function validarEmail(string $campoEmail) : bool{
         return $this->validarGeneral(ExpReg::CORREO, $campoEmail);
-    }
-    private function validarGenero(Genero $genero, string $campo) : bool{
-        return isset($this->peticion[$campo]) && preg_match($genero->value, $this->peticion[$campo]);
     }
 
     //validaciones especificas
@@ -58,11 +53,22 @@ class Validaciones{
 
 
     public function validarFecha(string $campoFecha) : bool{
-        return  (Fecha::fromDDMMYYYY($this->peticion[$campoFecha]))->despuesDeHoy();  
+        return  (Fecha::fromYYYYMMDD($this->peticion[$campoFecha]))->despuesDeHoy();  
     }
 
     public function validarRadio(string $campoRadio) : bool{
-        return ($this->validarGenero(Genero::HOMBRE, $campoRadio) || $this->validarGenero(Genero::MUJER, $campoRadio) || $this->validarGenero(Genero::OTRO, $campoRadio));
+        // Van a ser generos siempre
+        $valido = false;
+
+        if (isset($this->peticion[$campoRadio])) {
+            $generos = array_map(function (Genero $genero) : string {
+                return $genero->value;
+            }, Genero::cases());
+
+            $valido = (gettype($this->peticion[$campoRadio]) == "string") &&  in_array($this->peticion[$campoRadio], $generos);
+        }
+    
+        return $valido;
     }
 
     /*CHECKBOX 

@@ -6,7 +6,6 @@ use Desde_0\Campos\CampoFecha;
 use Desde_0\Campos\CampoNumber;
 use Desde_0\Campos\CampoRadio;
 use Desde_0\Campos\CampoTexto;
-use Desde_0\Utilidad\EscribirFichero;
 use Desde_0\Utilidad\Evento;
 use Desde_0\Utilidad\HttpMethod;
 use Desde_0\Utilidad\OpcionRadio;
@@ -19,6 +18,9 @@ spl_autoload_register(function ($class) {
     $file = str_replace('\\', '/', $class);
     require("$classPath${file}.php");
 });
+echo "<pre>";
+var_dump($_POST);
+echo "</pre>";
 
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
@@ -50,25 +52,28 @@ $form->addCampo($opciones);
 
 if(isset($_POST['Enviar'])){
     if($form->validarForm()){
-            $evento = Evento::fromForm($_POST);
-            
+        $evento = Evento::fromForm($form, $_POST);
+
+        if (!is_null($evento)) {
             file_put_contents(
                 "Eventos.csv",
-                $evento->toCSV()."\n",
-                FILE_APPEND
+                $evento->toCSV() . "\n"
+                // Esto no hace falta porque en el fichero solo puedes tener uno a la vez.
+                // , FILE_APPEND
             );
-        
-                //Redireccionar
-                header("Location: Desde_0\fpdf184\ticket.php");
-        
-                //salir
+
+            //Redireccionar
+            header("Location: fpdf184\\ticket.php");
+            //salir
             exit();
-        }else{
-            echo "No se ha podido validar la informacion de algun campo.";
         }
+        else {
+            echo "No se ha creado el objeto en la funcion fromForm()";
+        }        
     }else{
-        echo "Esto va como el ogt.";
+        echo "No se ha podido validar la informacion de algun campo.";
     }
+}
 
 
 
@@ -97,42 +102,6 @@ if(isset($_POST['Enviar'])){
                 form.classList.add('was-validated');
             }, false);
             });
-
-
-            // Validar los checkbox
-            const checkboxes = document.getElementById("formulario").querySelectorAll('input[type=checkbox]');
-
-            function atLeastOneCheckboxIsChecked() {
-                const checkboxes = Array.from(document.querySelectorAll(".checkbox"));
-                return checkboxes.reduce((acc, curr) => acc || curr.checked, false);
-            }
-
-            function init() {
-                
-                for (let i = 0; i < checkboxes.length; i++) {
-                    checkboxes[i].addEventListener('change', checkValidity);
-                    checkValidity();
-                }
-            }
-
-            function isChecked() {
-                for (let i = 0; i < checkboxes.length; i++) {
-                    if (checkboxes[i].checked) return true;
-                }
-
-                return false;
-            }
-
-            function checkValidity() {
-                const errorMessage = !isChecked() ? 'Tiene que haber al menos un checkbox seleccionado.' : '';
-                checkboxes.forEach((chk) => {
-                    chk.setCustomValidity(errorMessage)
-                });
-            }
-
-            if (checkboxes.length > 0) {
-                init();
-            }
         </script>
     </body>
 </html>
