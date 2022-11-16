@@ -32,6 +32,12 @@ class Evento{
 
     }
 
+    public static function toCSV(){
+
+        return $_POST[self::NOMBRE].";".$_POST[self::EMAIL].";".$_POST[self::NOMBRE_GRUPO].";".$_POST[self::PRECIO_ENTRADA].";".$_POST[self::FECHA].";".$_POST[self::AFORO].";".$_POST[self::OPCIONES];
+
+    }
+
 }
 
 ?>

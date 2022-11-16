@@ -43,34 +43,33 @@ $form->addCampo($precioEntrada);
 $form->addCampo($fecha);
 $form->addCampo($opciones);
 
+//$validaciones = new Validaciones(HttpMethod::POST);
+//$validaciones->getSingletone($_POST);
 
 
 
 if(isset($_POST['Enviar'])){
     if($form->validarForm()){
-        $evento = Evento::fromForm($_POST);
+            $evento = Evento::fromForm($_POST);
+            
+            file_put_contents(
+                "Eventos.csv",
+                $evento->toCSV()."\n",
+                FILE_APPEND
+            );
         
-        $contenido = new EscribirFichero(HttpMethod::POST);
-
-        $cadena = $contenido->rellenarFichero();
-
-        file_put_contents(
-            "Eventos.csv",
-            $cadena,
-            FILE_APPEND
-        );
-    
-            //Redireccionar
-            header("Location: Desde_0\fpdf184\ticket.php");
-    
-            //salir
-        exit();
+                //Redireccionar
+                header("Location: Desde_0\fpdf184\ticket.php");
+        
+                //salir
+            exit();
+        }else{
+            echo "No se ha podido validar la informacion de algun campo.";
+        }
     }else{
-        echo "No se ha podido validar la informacion de algun campo.";
+        echo "Esto va como el ogt.";
     }
-}else{
-    echo "Esto va como el ogt.";
-}
+
 
 
 ?>

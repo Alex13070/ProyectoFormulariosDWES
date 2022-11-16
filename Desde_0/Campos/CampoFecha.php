@@ -21,7 +21,7 @@ class CampoFecha extends Campo{
             <label class='form-label'>". $this->getLabel() ."</label>
             <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."required>
             <div class='invalid-feedback'>
-                ".$this->error."
+                ".$this->getError()."
             </div>          
         ";
     }

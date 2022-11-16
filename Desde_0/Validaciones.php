@@ -3,15 +3,16 @@
 namespace Desde_0;
 use Desde_0\Utilidad\HttpMethod;
 use Exception;
-use ExpReg;
+use Desde_0\Utilidad\ExpReg;
 use Desde_0\Utilidad\Genero;
 use Desde_0\Utilidad\Fecha;
+use Utilidad\Regex;
 
 class Validaciones{
 
     private array $peticion;
 
-    private static Validaciones $singletone;
+    private static ?Validaciones $singletone = null;
 
     //constructor que define peticion como GET o POST en base al HttpMethod
     private function __construct(HttpMethod $metodo){
@@ -26,11 +27,13 @@ class Validaciones{
                 throw new Exception("Metodo no soportado");
             }
         }
+
     public static function getSingletone($method) : Validaciones {
         return is_null(Validaciones::$singletone) ? new Validaciones($method) : Validaciones::$singletone;
     }
         //validaciones generales
     private function validarGeneral(ExpReg $regex, string $campo) : bool{
+        echo "<h1>".$regex->value."</h1>";
         return isset($this->peticion[$campo]) && preg_match($regex->value, $this->peticion[$campo]);
     }
 
@@ -86,6 +89,8 @@ class Validaciones{
     /**
      * Get the value of singletone
      */ 
+
+
 
 
 }

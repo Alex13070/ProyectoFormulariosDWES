@@ -1,5 +1,7 @@
 <?php
 
+namespace Desde_0\Utilidad;
+
 enum ExpReg : string {
 
     /**
