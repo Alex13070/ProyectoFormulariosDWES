@@ -49,9 +49,11 @@ function pintarPDF(Evento $evento) {
     $pdf->SetTextColor(0,0,0);
 
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("Datos del Evento")),0,'C',false);
+
+    $pdf->SetFont('Arial','B',10);
+    $pdf->MultiCell(0,5,utf8_decode($evento->getNombreGrupo()),0,'C',false);
     $pdf->SetFont('Arial','',9);
-    $pdf->MultiCell(0,5,utf8_decode("Nombre grupo ".$evento->getNombreGrupo()),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Dirección del sitio...."),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Dirección del sitio: Wizink Center"),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Aforo: ".$evento->getAforo()),0,'C',false);
 
 
@@ -65,10 +67,10 @@ function pintarPDF(Evento $evento) {
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("Datos del Comprador")),0,'C',false);
     $pdf->SetFont('Arial','',9);
     $pdf->MultiCell(0,5,utf8_decode("Cliente: ".$evento->getNombre()),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Documento: DNI 00000000"),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Documento: DNI 53740552V"),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Fecha: ".$evento->getFecha()),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Email: ".$evento->getEmail()),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Teléfono: 00000000"),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Teléfono: 603945265"),0,'C',false);
     $pdf->SetFont('Arial','B',10);
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("ENTRADA Nº: 1")),1,'C',false);
     $pdf->SetFont('Arial','',9);
@@ -83,8 +85,8 @@ function pintarPDF(Evento $evento) {
     $pdf->SetTextColor(0,0,0);
     $pdf->MultiCell(0,5,utf8_decode(strtoupper("datos especifios")),0,'C',false);
     $pdf->SetFont('Arial','',9);
-    $pdf->MultiCell(0,5,utf8_decode("Género musica/pelicula"),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Duración del Evento"),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Concierto"),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Duración del Evento: 2h 30 min"),0,'C',false);
 
     $pdf->Ln(1);
     $pdf->Cell(0,5,utf8_decode("-------------------------------------------------------------------"),0,0,'C');

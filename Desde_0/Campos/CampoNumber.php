@@ -26,7 +26,7 @@ class CampoNumber extends CampoTexto{
             <label class='form-label'>". $this->getLabel() ."</label>
             <input class='form-control' id='" . $this->getId() . "' type='" . $this->getType()->value . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."' min='" . $this->minimo . "' max='" . $this->maximo . "'required >
             <div class='invalid-feedback'>
-                ".$this->getError()."
+                ".$this->getError()." ". $this->minimo ." y ". $this->maximo ."
             </div>
         ";
     }

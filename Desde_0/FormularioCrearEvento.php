@@ -18,9 +18,10 @@ spl_autoload_register(function ($class) {
     $file = str_replace('\\', '/', $class);
     require("$classPath${file}.php");
 });
+/*
 echo "<pre>";
 var_dump($_POST);
-echo "</pre>";
+echo "</pre>";*/
 
 $form = new GenerarFormulario(" ",HttpMethod::POST);
 
@@ -28,9 +29,9 @@ $form = new GenerarFormulario(" ",HttpMethod::POST);
 $nombre = new CampoTexto("Nombre:",Evento::NOMBRE,TiposInput::TEXT,"nombre","Introduzca su nombre","El formato introducido es incorrecto");
 $email = new CampoEmail("Email:",Evento::EMAIL,TiposInput::EMAIL,"email","info@gmail.com"," El formato de correo introducido es incorrecto");
 $nombreGrupo = new CampoTexto("Nombre del grupo:",Evento::NOMBRE_GRUPO,TiposInput::TEXT,"nb_grupo","Introduzca el nombre del grupo"," Nombre del grupo incorrecto");
-$precioEntrada = new CampoNumber("Precio entrada:",Evento::PRECIO_ENTRADA,TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio introducido es incorrecto");
-$fecha = new CampoFecha("Fecha del evento:",Evento::FECHA,TiposInput::DATE,"fecha","Fecha incorrecta.");
-$aforo = new CampoNumber("Aforo:",Evento::AFORO,TiposInput::NUMBER,"aforo","Introduzca el aforo",0,500,"El aforo introducido es incorrecto");
+$precioEntrada = new CampoNumber("Precio entrada:",Evento::PRECIO_ENTRADA,TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio debe estar comprendido entre ");
+$fecha = new CampoFecha("Fecha del evento:",Evento::FECHA,TiposInput::DATE,"fecha","La fecha introducida es incorrecta o es anterior a la actual.");
+$aforo = new CampoNumber("Aforo:",Evento::AFORO,TiposInput::NUMBER,"aforo","Introduzca el aforo",0,15500,"El aforo debe estar comprendido entre ");
 $opciones = new CampoRadio("Sexo:",Evento::OPCIONES,TiposInput::RADIO_BUTTON,"s","F");
 
 $opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre",Evento::OPCIONES));
