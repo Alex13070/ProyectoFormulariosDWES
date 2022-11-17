@@ -43,6 +43,7 @@ class CampoRadio extends CampoMultiple{
         return Validaciones::getSingletone($method)->validarRadio($this->getName());
 
 	}
+
 }
 
 ?>

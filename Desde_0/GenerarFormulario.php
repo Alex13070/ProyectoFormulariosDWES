@@ -59,7 +59,18 @@ class GenerarFormulario{
         return $this;
     }
 
-    public function pintarForm() : string {
+    /*
+    public function prevenirXSSInjection(array $peticion){
+        $cadena = "";
+        foreach ($peticion as $pet) {
+            $cadena .= "<p>" .trim(htmlspecialchars(htmlentities($pet))). "</p>";
+        }
+    }
+    */
+    
+    public function pintarForm(bool $valido) : string {
+
+        
 
         return "
         <div class='card'>
@@ -67,7 +78,7 @@ class GenerarFormulario{
                 <h1 class='cabecera-form'>Crear evento</h1>
             </div>
             <div class='card-body' id='formulario'>
-                <form action='". $this->action ."' method='". $this->method->value."' id='form' class='needs-validation' novalidate>
+                <form action='". $this->action ."' method='". $this->method->value."' id='form' class='needs-validation ". ((!$valido) ? "was-validated" : "") ."' novalidate>
                 ".
                 array_reduce($this->campos, function(string $acu,Campo $actual) : string {
 
@@ -83,12 +94,12 @@ class GenerarFormulario{
        
     }
     
-    public function crearPagina() : string {
+    public function crearPagina(bool $valido) : string {
         return "<div class='container'>
             <div class='row'>
                 <div class='col-md-3'></div>
                 <div class='col-md-6' id='centro'>
-                    ". $this->pintarForm() ."
+                    ". $this->pintarForm($valido) ."
                 </div>
                 <div class='col-md-3'></div>
             </div>

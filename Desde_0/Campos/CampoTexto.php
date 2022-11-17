@@ -29,7 +29,7 @@ class CampoTexto extends Campo{
     public function contenidoCampos() : string {
         return "
             <label class='form-label'>". $this->getLabel() ."</label>
-            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."'required>
+            <input class='form-control' type='" . $this->getType()->value . "' id='" . $this->getid() . "' name='". $this->getName() ."' placeholder='". $this->getPlaceholder() ."' value='".$this->mantenerCampo($_POST)."' required>
             <div class='invalid-feedback'>
                 ".$this->getError()."
             </div>
@@ -45,6 +45,7 @@ class CampoTexto extends Campo{
         return Validaciones::getSingletone($method)->validarNombre($this->getName());
 
 	}
+
 }
 
 ?>

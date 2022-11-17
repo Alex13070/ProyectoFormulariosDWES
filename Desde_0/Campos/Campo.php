@@ -81,7 +81,10 @@ abstract class Campo{
     public abstract function validarCampos(HttpMethod $method) : bool;
 
 
- 
+    protected function mantenerCampo(array $peticion) : string {
+
+        return isset($peticion[$this->getName()]) ? $peticion[$this->getName()] : "";
+    }
 }
 
 ?>

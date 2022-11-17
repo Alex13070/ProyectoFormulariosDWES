@@ -51,31 +51,38 @@ $form->addCampo($opciones);
 
 
 
-if(isset($_POST['Enviar'])){
-    if($form->validarForm()){
-        $evento = Evento::fromForm($form, $_POST);
+function crearFormulario(GenerarFormulario $form) : string {
+    $contenido = "";
 
-        if (!is_null($evento)) {
-            file_put_contents(
-                "Eventos.csv",
-                $evento->toCSV() . "\n"
-                // Esto no hace falta porque en el fichero solo puedes tener uno a la vez.
-                // , FILE_APPEND
-            );
-
-            //Redireccionar
-            header("Location: fpdf184\\ticket.php");
-            //salir
-            exit();
+    if(isset($_POST['Enviar'])){
+        if($form->validarForm()){
+            $evento = Evento::fromForm($form, $_POST);
+    
+            if (!is_null($evento)) {
+                file_put_contents(
+                    "Eventos.csv",
+                    $evento->toCSV() . "\n"
+                    // Esto no hace falta porque en el fichero solo puedes tener uno a la vez.
+                    // , FILE_APPEND
+                );
+    
+                //Redireccionar
+                header("Location: fpdf184\\ticket.php");
+                //salir
+                exit();
+            }
+            else {
+                $contenido = $form->crearPagina(false);
+            }        
+        }else{
+            $contenido = $form->crearPagina(false);
         }
-        else {
-            echo "No se ha creado el objeto en la funcion fromForm()";
-        }        
     }else{
-        echo "No se ha podido validar la informacion de algun campo.";
+        $contenido = $form->crearPagina(true);
     }
-}
 
+    return $contenido;
+}
 
 
 ?>
@@ -91,7 +98,7 @@ if(isset($_POST['Enviar'])){
     </head>
     <body>
         <?= 
-            $form->crearPagina();
+            crearFormulario($form);
         ?>
         <script>
             document.querySelectorAll("form").forEach((form) => {
