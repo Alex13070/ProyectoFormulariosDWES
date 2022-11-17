@@ -32,7 +32,7 @@ $nombreGrupo = new CampoTexto("Nombre del grupo:",Evento::NOMBRE_GRUPO,TiposInpu
 $precioEntrada = new CampoNumber("Precio entrada:",Evento::PRECIO_ENTRADA,TiposInput::NUMBER,"precio","Introduzca el precio de la entrada",5,150,"El precio debe estar comprendido entre ");
 $fecha = new CampoFecha("Fecha del evento:",Evento::FECHA,TiposInput::DATE,"fecha","La fecha introducida es incorrecta o es anterior a la actual.");
 $aforo = new CampoNumber("Aforo:",Evento::AFORO,TiposInput::NUMBER,"aforo","Introduzca el aforo",0,15500,"El aforo debe estar comprendido entre ");
-$opciones = new CampoRadio("Sexo:",Evento::OPCIONES,TiposInput::RADIO_BUTTON,"s","F");
+$opciones = new CampoRadio("Sexo:",Evento::OPCIONES,TiposInput::RADIO_BUTTON,"s","F","Debe escoger una opcion");
 
 $opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre",Evento::OPCIONES));
 $opciones->addOpcion(new OpcionRadio("Mujer","Mujer","Mujer",Evento::OPCIONES));

@@ -45,8 +45,7 @@ class OpcionRadio extends Opcion{
         <div class='form-check'>
             <input class='form-check-input' type='" . TiposInput::RADIO_BUTTON->value . "' name='" . $this->name . "' id='". $this->id ."' value='" . $this->getValue() . "' required>
             <label class='form-check-label' for='" . $this->id . "'> " . $this->getLabel() . " </label>
-        </div>
-        ";
+        </div>";
 	}
 }
 
