@@ -23,6 +23,7 @@ class EscribirFichero{
         }
     }
 
+    /*
     public function rellenarFichero(){
 
         $cadena = "";
@@ -40,6 +41,7 @@ class EscribirFichero{
         return $cadena;
 
     }
+    */
 
     public function getSingletone($method) : EscribirFichero {
         return is_null(EscribirFichero::$singletone) ? new EscribirFichero($method) : EscribirFichero::$singletone;
